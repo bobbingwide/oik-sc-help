@@ -219,8 +219,30 @@ function recipe__syntax( $shortcode="recipe" ) {
 
 function recipe__example( $shortcode="recipe" ) { 
   return( "A nice cuppa" );
-} 
+}
 
+function archives__help() {
+	return( "Archive index" );
+}
+
+/**
+ * Syntax hook for [archives] shortcode
+ * 
+ * {@link https://en.support.wordpress.com/archives-shortcode/}
+ */
+function archives__syntax() {
+	$syntax = array( "type" => bw_skv( "postbypost", "yearly|monthly|weekly|daily", "The type of archives list to display" ) 
+					, "format" => bw_skv( "html", "option|custom", "How to display the archives list" )
+					,	"limit" => bw_skv( null, "integer", "The number of archive entries to display" )
+					, "showcount" => bw_skv( "false", "true", "Display post count of each archive entry" )
+					, "before" => bw_skv( null, "<i>text</i>", "Text to go before each archive entry" )
+					, "after" => bw_skv( null, "<i>text</i>", "Text to go after each archive entry" )
+					, "order" => bw_skv( "desc", "asc", "Sort order" )
+					); 
+	return( $syntax );										
+}
+
+ 
  
 
 

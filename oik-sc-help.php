@@ -3,7 +3,7 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads and Jetpack shortcodes
-Version: 1.20
+Version: 1.20.1
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -57,7 +57,6 @@ function oik_sc_help_wpmembers() {
   }
 }
 
-
 /** 
  * Add shortcode help for the WooCommerce plugin
  * 
@@ -89,9 +88,7 @@ function oik_sc_help_woocommerce() {
       bw_add_shortcode_file( $shortcode, $path );
     }
   } 
-
 }
-
 
 /**
  * Add shortcode help for the Easy Digital Downloads plugin
@@ -121,15 +118,12 @@ function oik_sc_help_easy_digital_downloads() {
 /**
  * Add shortcode help for Jetpack 
  *
- * All shortcodes from Jetpack 3.4.1
+ * All shortcodes from Jetpack 3.6.x
  * Some shortcodes will not be active until the implementing module is activated
- * 
+ * @TODO Add all the missing shortcodes to this list
  */ 
 function oik_sc_help_jetpack() {
-  $shortcodes = "audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,";
-  
-  //bw_add_shortcode_file( "jpsc", oik_path( "shortcodes/jetpack.php", "oik-sc-help" ) );
-  
+  $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,";
   oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes ); 
 }
   
@@ -152,7 +146,9 @@ function oik_sc_help_generic( $file, $shortcodes ) {
     foreach ( $shortcodes as $key => $shortcode ) {
       bw_add_shortcode_file( $shortcode, $path );
     }
-  }
+  } else {
+		bw_trace2( $first, "shortcode does not exist", true, BW_TRACE_WARNING );
+	}
 }
 
 /**
@@ -183,6 +179,31 @@ function oik_sc_help_activation() {
   $depends = "oik:2.3-alpha";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
+ 
+/**
+ * Implement "_sc__help" filter to help find help for a shortcode
+ *
+ * Props: bartee for Shortcode Reference. It's helpful to know the function name at least
+ * I don't need the Reflection logic yet.
+ *
+ * @param array $default_help array of help info found so far
+ * @param string $shortcode the shortcode we're currently interested in
+ * @return array updated with the function name if the help was missing but the shortcode is active
+ */ 
+function oik_sc_help_sc__help( $default_help, $shortcode ) {
+	global $shortcode_tags;
+	if ( !isset( $default_help[ $shortcode ] ) ) {
+		if ( isset( $shortcode_tags[ $shortcode ] ) ) { 
+			$function_name = $shortcode_tags[ $shortcode ];
+			if ( is_string( $function_name ) ){
+		 		$default_help[ $shortcode ] = $function_name;
+			} else {
+				$default_help[ $shortcode ] = /* $function_name[0] . '::'. */ $function_name[1];
+			}
+		}	
+	}
+	return( $default_help );
+}
 
 /** 
  * Function to invoke when oik-sc-help plugin loaded                             
@@ -191,6 +212,7 @@ function oik_sc_help_plugin_loaded() {
   add_action( "oik_add_shortcodes", "oik_sc_help_init" );
   add_action( "oik_admin_menu", "oik_sc_help_admin_menu" );
   add_action( "admin_notices", "oik_sc_help_activation" );
+	add_filter( "_sc__help", "oik_sc_help_sc__help", 10, 2 );
 }
 
 oik_sc_help_plugin_loaded();
