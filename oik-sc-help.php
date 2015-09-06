@@ -3,7 +3,7 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads and Jetpack shortcodes
-Version: 1.19
+Version: 1.20
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -35,19 +35,10 @@ License: GPL2
 function oik_sc_help_init() { 
   bw_add_shortcode( "bw_codes", "bw_codes", oik_path( "shortcodes/oik-codes.php") , false );
   bw_add_shortcode( "bw_code", "bw_code", oik_path( "shortcodes/oik-codes.php") , false ); 
-  
   oik_sc_help_wpmembers();
-  
   oik_sc_help_woocommerce();
-  
   oik_sc_help_easy_digital_downloads();
-   
-  
-  /* Add shortcode help for jetpack plugin */
-  bw_add_shortcode_file( "jpsc", oik_path( "shortcodes/jetpack.php", "oik-sc-help" ) );
-  
-  
-  
+  oik_sc_help_jetpack();
 }
 
 /** 
@@ -127,6 +118,21 @@ function oik_sc_help_easy_digital_downloads() {
   oik_sc_help_generic( "shortcodes/easy-digital-downloads.php", $shortcodes ); 
 }
 
+/**
+ * Add shortcode help for Jetpack 
+ *
+ * All shortcodes from Jetpack 3.4.1
+ * Some shortcodes will not be active until the implementing module is activated
+ * 
+ */ 
+function oik_sc_help_jetpack() {
+  $shortcodes = "audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,";
+  
+  //bw_add_shortcode_file( "jpsc", oik_path( "shortcodes/jetpack.php", "oik-sc-help" ) );
+  
+  oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes ); 
+}
+  
 /**
  * Generic add shortcode file for any other plugin / theme
  *
