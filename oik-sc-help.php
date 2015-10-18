@@ -125,7 +125,7 @@ function oik_sc_help_easy_digital_downloads() {
  * @TODO Add all the missing shortcodes to this list
  */ 
 function oik_sc_help_jetpack() {
-  $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,";
+  $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,soundcloud";
   oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes ); 
 }
   

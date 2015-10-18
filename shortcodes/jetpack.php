@@ -32,7 +32,7 @@ modules/shortcodes/medium.php
 modules/shortcodes/mixcloud.php
 modules/shortcodes/scribd.php
 modules/shortcodes/slideshare.php
-modules/shortcodes/soundcloud.php
+* modules/shortcodes/soundcloud.php
 modules/shortcodes/ted.php
 modules/shortcodes/twitter-timeline.php
 modules/shortcodes/vimeo.php
@@ -283,7 +283,22 @@ function flickr__syntax() {
 	return( $syntax );
 }
  
+function soundcloud__help() {
+	return( "Embed audio from SoundCloud" );
+}
 
+/** 
+
+  https://en.support.wordpress.com/soundcloud-audio-player/
+	
+	[soundcloud url=”https://api.soundcloud.com/tracks/156661852&#8243; 
+	params=”auto_play=false&hide_related=false&visual=true” width=”100%” height=”450? iframe=”true” /]
+ */
+function soundcloud__syntax() {
+	$syntax = array( "url" => bw_skv( null, "<i>URL</i>", "Soundcloud URL" )
+								 );
+	return( $syntax );
+} 
  
  
 
