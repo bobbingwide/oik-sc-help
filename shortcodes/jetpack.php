@@ -16,13 +16,13 @@ Jetpack_RelatedPosts::_setup_shortcode() – Sets up the shortcode processing.
 Jetpack_Slideshow_Shortcode::__construct() -
 Jetpack_VideoPress_Shortcode::__construct() –
 modules/latex.php
-modules/shortcodes/archives.php
+* modules/shortcodes/archives.php
 modules/shortcodes/bandcamp.php
 modules/shortcodes/blip.php
 modules/shortcodes/dailymotion.php
 modules/shortcodes/diggthis.php
 modules/shortcodes/facebook.php
-modules/shortcodes/flickr.php
+* modules/shortcodes/flickr.php
 modules/shortcodes/gist.php
 modules/shortcodes/googlemaps.php
 modules/shortcodes/googleplus.php
@@ -241,6 +241,48 @@ function archives__syntax() {
 					); 
 	return( $syntax );										
 }
+
+/**
+ *
+ */ 
+function facebook__help( $shortcode="facebook" ) {
+	return( "Embed a Facebook update" );
+}
+
+/**
+ */
+function facebook__syntax( $shortcode="facebook" ) {
+	$syntax = array( "url" => bw_skv( null, "<i>Facebook URL</i>", "Facebook URL or ID to embed" ) 
+								 );
+								 
+	return( $syntax );
+}
+
+/**
+ *
+ */
+function flickr__help() {
+	return( "Embed a Flickr video or photo" );
+}
+	
+	
+/**
+ * 
+ */
+function flickr__syntax() {
+	$syntax = array( "video" => bw_skv( null, "<i>video</i>", "Video" )
+	//         	
+	//	'video'     => 0,
+	//	'photo'     => 0,
+//		'show_info' => 0,
+//		'w'         => 400,
+//		'h'         => 300,
+//		'secret'    => 0,
+//		'size'      => 0,
+	 );
+	return( $syntax );
+}
+ 
 
  
  

@@ -118,12 +118,14 @@ function oik_sc_help_easy_digital_downloads() {
 /**
  * Add shortcode help for Jetpack 
  *
- * All shortcodes from Jetpack 3.6.x
+ * All shortcodes from Jetpack 3.6.2
+ * Latest version of Jetpack 3.7.2
+ * 
  * Some shortcodes will not be active until the implementing module is activated
  * @TODO Add all the missing shortcodes to this list
  */ 
 function oik_sc_help_jetpack() {
-  $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,";
+  $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,";
   oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes ); 
 }
   
