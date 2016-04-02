@@ -10,15 +10,15 @@
  * This list of shortcodes extracted from Woocommerce 2.2.10 -  class-wc-shortcodes.php on 2015/01/29
  
  $shortcodes = array(
-			'add_to_cart'                => __CLASS__ . '::product_add_to_cart',
-			'add_to_cart_url'            => __CLASS__ . '::product_add_to_cart_url',
-			'best_selling_products'      => __CLASS__ . '::best_selling_products',
-			'featured_products'          => __CLASS__ . '::featured_products',
-			'product'                    => __CLASS__ . '::product',
-			'product_attribute'          => __CLASS__ . '::product_attribute',
-			'product_categories'         => __CLASS__ . '::product_categories',
-			'product_category'           => __CLASS__ . '::product_category',
-			'product_page'               => __CLASS__ . '::product_page',
+	y		'add_to_cart'                => __CLASS__ . '::product_add_to_cart',
+	y		'add_to_cart_url'            => __CLASS__ . '::product_add_to_cart_url',
+	y		'best_selling_products'      => __CLASS__ . '::best_selling_products',
+	y		'featured_products'          => __CLASS__ . '::featured_products',
+	y		'product'                    => __CLASS__ . '::product',
+	y		'product_attribute'          => __CLASS__ . '::product_attribute',
+	y		'product_categories'         => __CLASS__ . '::product_categories',
+	y		'product_category'           => __CLASS__ . '::product_category',
+	y		'product_page'               => __CLASS__ . '::product_page',
 			'products'                   => __CLASS__ . '::products',
 			'recent_products'            => __CLASS__ . '::recent_products',
 			'related_products'           => __CLASS__ . '::related_products',
@@ -65,9 +65,6 @@ function best_selling_products__syntax() {
                  );
   return( $syntax );
 }
-
-
-
 
 function featured_products__help() { 
   return( "Display featured products" );
@@ -174,9 +171,12 @@ function product_page__syntax() {
   return( $syntax );
 }  
              
+function products__help() {  
+	return( "Show products" ); 
+}								 
 /*
-function products__help() {                   
-function products__syntax() {                   
+function products__syntax() { 
+}                  
 function recent_products__help() {            
 function recent_products__syntax() {            
 function related_products__help() {           
