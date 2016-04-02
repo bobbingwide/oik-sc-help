@@ -2,14 +2,15 @@
 * Contributors: bobbingwide
 * Donate link: http://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcodes, smart, lazy, [bw_code], [bw_codes]
-* Requires at least: 3.7
-* Tested up to: 3.9.1
-* Stable tag: 1.19
+* Requires at least: 3.9
+* Tested up to: 4.5-RC1
+* Stable tag: 1.20.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description 
-On page help for lazy smart shortcodes
+On page help for lazy smart shortcodes.
+
 This plugin provides two shortcodes for displaying information about shortcodes
 * [bw_code] displays detailed information about a specific shortcode
 * [bw_codes] displays information about ALL active shortcodes
@@ -33,6 +34,12 @@ Yes - see above
 2. [bw_code] output showing Shortcode HTML snippets
 
 ## Upgrade Notice 
+# 1.20.1 
+Tested with WordPress 4.5-RC1 and WordPress MultiSite
+
+# 1.20 
+Tested with WordPress 4.1 and WordPress MultiSite
+
 # 1.19 
 Tested with WordPress 3.9.1
 
@@ -44,6 +51,19 @@ This version is a standalone version from www.oik-plugins.co.uk
 This version matches the child plugin xyz in oik v1.17
 
 ## Changelog 
+# 1.20.1 
+* Added: File for Genesis theme framework shortcodes
+* Added: Add help hook for Jetpack's [products] shortcode
+* Added: Add help and syntax for [soundcloud]
+* Added: Add help and syntax for facebook and flickr shortcodes
+* Added: Add archives shortcode from Jetpack
+* Tested: With WordPress 4.5-RC1 and WordPress MultiSite
+
+# 1.20 
+* Added: Separate files for shortcode help for: wp-members, woocommerce, easy-digital-downloads, jetpack
+* Added:
+* Tested: With WordPress 4.1 and WordPress MultiSite
+
 # 1.19 
 * Tested: With WordPress 3.9.1
 * Changed: Dependency checking. Now depends on oik v2.3-alpha
