@@ -146,7 +146,6 @@ function footer_wordpress_link__syntax() {
   return( $syntax );
 }
 
-
 /**
  * Help hook for [footer_loginout] shortcode
  */ 
@@ -162,6 +161,46 @@ function footer_loginout__syntax() {
   $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
 								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
 								 , "redirect" => bw_skv( null, "<i>URL</i>", "Path to redirect on login" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_date] shortcode
+ */ 
+function post_date__help() {
+  return( "Display post publication date" );
+}
+
+/**
+ * Syntax hook for [post_date] shortcode
+ * 
+ */
+function post_date__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
+								 , "format" => bw_skv( get_option( 'date_format' ), "<i>date format</i>|relative", "Date format" )
+								 , "label" => bw_skv( null, "<i>text</i>", "Label" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_time] shortcode
+ */ 
+function post_time__help() {
+  return( "Display post publication time" );
+}
+
+/**
+ * Syntax hook for [post_time] shortcode
+ * 
+ */
+function post_time__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
+								 , "format" => bw_skv( get_option( 'time_format' ), "<i>time format</i>", "Time format" )
+								 , "label" => bw_skv( null, "<i>text</i>", "Label" )
 								 );
   return( $syntax );
 }

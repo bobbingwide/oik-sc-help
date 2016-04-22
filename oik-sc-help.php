@@ -152,7 +152,7 @@ function oik_sc_help_jetpack() {
  */
 function oik_sc_help_genesis() {
   $shortcodes = "footer_backtotop,footer_childtheme_link,footer_copyright,footer_genesis_link,footer_studiopress_link,footer_wordpress_link,footer_loginout";
-	$shortcodes .= ",post_date";
+	$shortcodes .= ",post_date,post_time";
   oik_sc_help_generic( "shortcodes/genesis.php", $shortcodes ); 
 }
  
