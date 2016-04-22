@@ -39,6 +39,7 @@ function oik_sc_help_init() {
   oik_sc_help_woocommerce();
   oik_sc_help_easy_digital_downloads();
   oik_sc_help_jetpack();
+	oik_sc_help_genesis();
 }
 
 /** 
@@ -128,6 +129,33 @@ function oik_sc_help_jetpack() {
   $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,soundcloud";
   oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes ); 
 }
+
+/**
+ * Add shortcode help for Genesis
+ * 
+ * All shortcodes from Genesis v2.2.7
+ 
+ footer.php:add_shortcode( 'footer_loginout', 'genesis_footer_loginout_shortcode' );
+ 
+ post.php:add_shortcode( 'post_date', 'genesis_post_date_shortcode' );
+ post.php:add_shortcode( 'post_time', 'genesis_post_time_shortcode' );
+ post.php:add_shortcode( 'post_modified_date', 'genesis_post_modified_date_shortcode' );
+ post.php:add_shortcode( 'post_modified_time', 'genesis_post_modified_time_shortcode' );
+ post.php:add_shortcode( 'post_author', 'genesis_post_author_shortcode' );
+ post.php:add_shortcode( 'post_author_link', 'genesis_post_author_link_shortcode' );
+ post.php:add_shortcode( 'post_author_posts_link', 'genesis_post_author_posts_link_shortcode' );
+ post.php:add_shortcode( 'post_comments', 'genesis_post_comments_shortcode' );
+ post.php:add_shortcode( 'post_tags', 'genesis_post_tags_shortcode' );
+ post.php:add_shortcode( 'post_categories', 'genesis_post_categories_shortcode' );
+ post.php:add_shortcode( 'post_terms', 'genesis_post_terms_shortcode' );
+ post.php:add_shortcode( 'post_edit', 'genesis_post_edit_shortcode' );
+ */
+function oik_sc_help_genesis() {
+  $shortcodes = "footer_backtotop,footer_childtheme_link,footer_copyright,footer_genesis_link,footer_studiopress_link,footer_wordpress_link,footer_loginout";
+	$shortcodes .= ",post_date";
+  oik_sc_help_generic( "shortcodes/genesis.php", $shortcodes ); 
+}
+ 
   
 /**
  * Generic add shortcode file for any other plugin / theme
