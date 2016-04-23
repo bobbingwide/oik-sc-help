@@ -137,10 +137,6 @@ function oik_sc_help_jetpack() {
  
  footer.php:add_shortcode( 'footer_loginout', 'genesis_footer_loginout_shortcode' );
  
- post.php:add_shortcode( 'post_date', 'genesis_post_date_shortcode' );
- post.php:add_shortcode( 'post_time', 'genesis_post_time_shortcode' );
- post.php:add_shortcode( 'post_modified_date', 'genesis_post_modified_date_shortcode' );
- post.php:add_shortcode( 'post_modified_time', 'genesis_post_modified_time_shortcode' );
  post.php:add_shortcode( 'post_author', 'genesis_post_author_shortcode' );
  post.php:add_shortcode( 'post_author_link', 'genesis_post_author_link_shortcode' );
  post.php:add_shortcode( 'post_author_posts_link', 'genesis_post_author_posts_link_shortcode' );
@@ -152,7 +148,7 @@ function oik_sc_help_jetpack() {
  */
 function oik_sc_help_genesis() {
   $shortcodes = "footer_backtotop,footer_childtheme_link,footer_copyright,footer_genesis_link,footer_studiopress_link,footer_wordpress_link,footer_loginout";
-	$shortcodes .= ",post_date,post_time";
+	$shortcodes .= ",post_date,post_time,post_modified_date,post_modified_time";
   oik_sc_help_generic( "shortcodes/genesis.php", $shortcodes ); 
 }
  
