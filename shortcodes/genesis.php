@@ -300,6 +300,108 @@ function post_author_posts_link__syntax() {
   return( $syntax );
 }
 
+/**
+ * Help hook for [post_comments] shortcode
+ */ 
+function post_comments__help() {
+  return( "Display link to post comments" );
+}
+
+/**
+ * Syntax hook for [post_comments] shortcode
+ * 
+ */
+function post_comments__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
+								 , "hide_if_off" => bw_skv( true, "false", "Hide link if comments are off" )
+								 , "more" => bw_skv( "% Comments", "<i>text</i>", "Text when there is more than one comment" )
+								 , "one" => bw_skv( "1 Comment", "<i>text</i>", "Text when there is exactly one comment" )
+								 , "zero" => bw_skv( "Leave a Comment", "<i>text</i>", "Text when there are no comments" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_tags] shortcode
+ */ 
+function post_tags__help() {
+  return( "Display tag links list" );
+}
+
+/**
+ * Syntax hook for [post_tags] shortcode
+ * 
+ */
+function post_tags__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( "Tagged With:", "<i>text</i>", "Before output link" )
+								 , "sep" => bw_skv( ", ", "<i>text</i>", "Separator string between tags" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_categories] shortcode
+ */ 
+function post_categories__help() {
+  return( "Display category links list" );
+}
+
+/**
+ * Syntax hook for [post_categories] shortcode
+ * 
+ */
+function post_categories__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( "Filed Under:", "<i>text</i>", "Before output link" )
+								 , "sep" => bw_skv( ", ", "<i>text</i>", "Separator string between categories" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_terms] shortcode
+ */ 
+function post_terms__help() {
+  return( "Display linked post taxonomy terms list" );
+}
+
+/**
+ * Syntax hook for [post_terms] shortcode
+ * 
+ */
+function post_terms__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( "Filed Under:", "<i>text</i>", "Before output link" )
+								 , "sep" => bw_skv( ", ", "<i>text</i>", "Separator string between tags" )
+								 , "taxonomy" => bw_skv( "category", "<i>string</i>", "Taxonomy name" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_edit] shortcode
+ */ 
+function post_edit__help() {
+  return( "Display edit post link" );
+}
+
+/**
+ * Syntax hook for [post_edit] shortcode
+ * 
+ */
+function post_edit__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
+								 , "link" => bw_skv( "(Edit)", "<i>text</i>", "Link text" )
+								 );
+  return( $syntax );
+}
+
+
+
+
 
 
 
