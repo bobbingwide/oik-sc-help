@@ -246,6 +246,61 @@ function post_modified_time__syntax() {
   return( $syntax );
 }
 
+/**
+ * Help hook for [post_author] shortcode
+ */ 
+function post_author__help() {
+  return( "Display post author name" );
+}
+
+/**
+ * Syntax hook for [post_author] shortcode
+ * 
+ */
+function post_author__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_author_link] shortcode
+ */ 
+function post_author_link__help() {
+  return( "Display post author link" );
+}
+
+/**
+ * Syntax hook for [post_author_link] shortcode
+ * 
+ */
+function post_author_link__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
+								 );
+  return( $syntax );
+}
+
+/**
+ * Help hook for [post_author_posts_link] shortcode
+ */ 
+function post_author_posts_link__help() {
+  return( "Display link to author's posts" );
+}
+
+/**
+ * Syntax hook for [post_author_posts_link] shortcode
+ * 
+ */
+function post_author_posts_link__syntax() {
+  $syntax = array( "after" => bw_skv( null, "<i>text</i>", "After output link" )
+								 , "before" => bw_skv( null, "<i>text</i>", "Before output link" )
+								 );
+  return( $syntax );
+}
+
+
 
 
  
