@@ -3,7 +3,7 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads, Jetpack and Genesis theme framework shortcodes
-Version: 1.20.1
+Version: 1.20.2
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -183,6 +183,7 @@ function oik_sc_help_admin_menu() {
 /**
  * Implement "admin_notices" for oik-sc-help plugin
  *
+ * Now dependent upon oik v3.0.0 or higher
  */ 
 function oik_sc_help_activation() {
   static $plugin_basename = null;
@@ -193,7 +194,7 @@ function oik_sc_help_activation() {
       require_once( "admin/oik-activation.php" );  
     }
   }  
-  $depends = "oik:2.3-alpha";
+  $depends = "oik:3.0.0";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
  

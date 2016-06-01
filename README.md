@@ -3,8 +3,8 @@
 * Donate link: http://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcodes, smart, lazy, [bw_code], [bw_codes]
 * Requires at least: 3.9
-* Tested up to: 4.5-RC1
-* Stable tag: 1.20.1
+* Tested up to: 4.5.2
+* Stable tag: 1.20.2
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ Yes - see above
 2. [bw_code] output showing Shortcode HTML snippets
 
 ## Upgrade Notice 
+# 1.20.2 
+Tested with WordPress 4.5.2 and WordPress MultiSite
+
 # 1.20.1 
 Tested with WordPress 4.5-RC1 and WordPress MultiSite
 
@@ -51,6 +54,10 @@ This version is a standalone version from www.oik-plugins.co.uk
 This version matches the child plugin xyz in oik v1.17
 
 ## Changelog 
+# 1.20.2 
+*	Added: Help and syntax for Genesis theme framework shortcodes [github bobbingwide oik-sc-help issue 1]
+* Tested: With WordPress 4.5.2 and WordPress MultiSite
+
 # 1.20.1 
 * Added: File for Genesis theme framework shortcodes
 * Added: Add help hook for Jetpack's [products] shortcode
