@@ -96,7 +96,7 @@ function oik_sc_help_wpmembers() {
  * 
  */
 function oik_sc_help_woocommerce() {
-  if ( shortcode_exists( "add_to_cart" ) ) {
+  //if ( shortcode_exists( "add_to_cart" ) ) {
     $path = oik_path( "shortcodes/woocommerce.php", "oik-sc-help" );
     $shortcodes = array( 'add_to_cart' 
                     , 'add_to_cart_url'            
@@ -122,7 +122,7 @@ function oik_sc_help_woocommerce() {
       bw_add_shortcode_file( $shortcode, $path );
 			oik_sc_shortcode_component( $shortcode, "woocommerce" );
     }
-  } 
+  //} 
 }
 
 /**
