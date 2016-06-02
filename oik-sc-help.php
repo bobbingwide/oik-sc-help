@@ -3,7 +3,7 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads, Jetpack and Genesis theme framework shortcodes
-Version: 1.20.2
+Version: 1.20.3
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -40,6 +40,38 @@ function oik_sc_help_init() {
   oik_sc_help_easy_digital_downloads();
   oik_sc_help_jetpack();
 	oik_sc_help_genesis();
+	
+	add_filter( "oiksc_shortcodes_components", "oik_sc_shortcodes_components", 11 );
+	
+}
+
+/**
+ * Associate a shortcode to a component
+ * 
+ * @param string $shortcode	- the shortcode
+ * @param string $component - the component's slug
+ */
+function oik_sc_shortcode_component( $shortcode, $component ) {
+	global $shortcode_components;
+	$shortcode_components[ $shortcode ] = $component;
+	//print_r( $shortcode_components );
+}
+
+/**
+ * Implement "oiksc_shortcodes_components" for oik-sc-help
+ * 
+ * @param array $shortcodes - mapping of shortcode to component
+ * @return array updated array
+ */
+function oik_sc_shortcodes_components( $shortcodes ) {
+	global $shortcode_components;
+	if ( is_array( $shortcode_components ) && count( $shortcode_components ) ) {
+		foreach ( $shortcode_components as $shortcode => $component ) {	
+			$shortcodes[ $shortcode ] = $component;
+			echo "$shortcode -> $component " . PHP_EOL;
+		}
+	}
+	return( $shortcodes );
 }
 
 /** 
@@ -54,6 +86,7 @@ function oik_sc_help_wpmembers() {
     $shortcodes = bw_as_array( "wp-members,wpmem_field,wpmem_logged_in,wpmem_logged_out,wpmem_logout" );
     foreach ( $shortcodes as $key => $shortcode ) {
       bw_add_shortcode_file( $shortcode, $path );
+			oik_sc_shortcode_component( $shortcode, "wp-members" );
     } 
   }
 }
@@ -87,6 +120,7 @@ function oik_sc_help_woocommerce() {
                     );
     foreach ( $shortcodes as $key => $shortcode ) {
       bw_add_shortcode_file( $shortcode, $path );
+			oik_sc_shortcode_component( $shortcode, "woocommerce" );
     }
   } 
 }
@@ -113,7 +147,7 @@ shortcodes.php:add_shortcode( 'edd_profile_editor', 'edd_profile_editor_shortcod
  */ 
 function oik_sc_help_easy_digital_downloads() {                  
   $shortcodes = "purchase_link,download_history,purchase_history,download_checkout,download_cart,edd_login,edd_register,download_discounts,purchase_collection,downloads,edd_price,edd_receipt,edd_profile_editor"; 
-  oik_sc_help_generic( "shortcodes/easy-digital-downloads.php", $shortcodes ); 
+  oik_sc_help_generic( "shortcodes/easy-digital-downloads.php", $shortcodes, "easy-digital-downloads" ); 
 }
 
 /**
@@ -127,7 +161,8 @@ function oik_sc_help_easy_digital_downloads() {
  */ 
 function oik_sc_help_jetpack() {
   $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,soundcloud";
-  oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes ); 
+  oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes, "jetpack" ); 
+	
 }
 
 /**
@@ -140,7 +175,7 @@ function oik_sc_help_genesis() {
 	$shortcodes .= ",post_date,post_time,post_modified_date,post_modified_time";
 	$shortcodes .= ",post_author,post_author_link,post_author_posts_link";
 	$shortcodes .= ",post_comments,post_tags,post_categories,post_terms,post_edit";
-  oik_sc_help_generic( "shortcodes/genesis.php", $shortcodes ); 
+  oik_sc_help_generic( "shortcodes/genesis.php", $shortcodes, "genesis" ); 
 }
  
   
@@ -153,19 +188,21 @@ function oik_sc_help_genesis() {
  * Note that the file is not loaded until the shortcode syntax is required.
  * 
  * @param string $file - the filename within the shortcodes folder e.g. shortcodes/plugin.php
- * @param mixed $shortcodes - CSV/array of shortcodes  
+ * @param mixed $shortcodes - CSV/array of shortcodes 
+ * @param string $component  
  */ 
-function oik_sc_help_generic( $file, $shortcodes ) {
+function oik_sc_help_generic( $file, $shortcodes, $component ) {
   $shortcodes = bw_as_array( $shortcodes );
-  $first = $shortcodes[0];
-  if ( shortcode_exists( $first ) ) {
+  //$first = $shortcodes[0];
+  //if ( shortcode_exists( $first ) ) {
     $path = oik_path( $file, "oik-sc-help" );
     foreach ( $shortcodes as $key => $shortcode ) {
       bw_add_shortcode_file( $shortcode, $path );
+			oik_sc_shortcode_component( $shortcode, $component );
     }
-  } else {
-		bw_trace2( $first, "shortcode does not exist", true, BW_TRACE_WARNING );
-	}
+  //} else {
+	//	bw_trace2( $first, "shortcode does not exist", true, BW_TRACE_WARNING );
+	//}
 }
 
 /**
