@@ -1,42 +1,41 @@
-<?php // (C) Copyright Bobbing Wide 2013-2015
-
-
-// @TODO WooCommerce shortcode processing moved from 1.6.6 to 2.0
-//oik_require( "shortcodes/shortcode-init.php", "woocommerce" );
+<?php // (C) Copyright Bobbing Wide 2013-2016
 
 /**
- * Shortcode help for WooCommerce shortcodes
+ * Help and Syntax for WooCommerce shortcodes
+ * 
+ * Latest version: 2.6.2
  *
- * This list of shortcodes extracted from Woocommerce 2.2.10 -  class-wc-shortcodes.php on 2015/01/29
- 
- $shortcodes = array(
-	y		'add_to_cart'                => __CLASS__ . '::product_add_to_cart',
-	y		'add_to_cart_url'            => __CLASS__ . '::product_add_to_cart_url',
-	y		'best_selling_products'      => __CLASS__ . '::best_selling_products',
-	y		'featured_products'          => __CLASS__ . '::featured_products',
-	y		'product'                    => __CLASS__ . '::product',
-	y		'product_attribute'          => __CLASS__ . '::product_attribute',
-	y		'product_categories'         => __CLASS__ . '::product_categories',
-	y		'product_category'           => __CLASS__ . '::product_category',
-	y		'product_page'               => __CLASS__ . '::product_page',
-			'products'                   => __CLASS__ . '::products',
-			'recent_products'            => __CLASS__ . '::recent_products',
-			'related_products'           => __CLASS__ . '::related_products',
-			'sale_products'              => __CLASS__ . '::sale_products',
-			'shop_messages'              => __CLASS__ . '::shop_messages',
-			'top_rated_products'         => __CLASS__ . '::top_rated_products',
-			'woocommerce_cart'           => __CLASS__ . '::cart',
-			'woocommerce_checkout'       => __CLASS__ . '::checkout',
-			'woocommerce_my_account'     => __CLASS__ . '::my_account',
-			'woocommerce_order_tracking' => __CLASS__ . '::order_tracking',
-      
-      
+ *
+ * @TODO WooCommerce shortcode processing moved from 1.6.6 to 2.0
+ *
+ *
+ * This list of shortcodes extracted from Woocommerce 2.2.10 ( class-wc-shortcodes.php ) on 2015/01/29.
+ * Latest list ( 2.6.2 ) includes/class-wc-shortcodes.php, is the same as for 2.2.10, plus woocommerce_messages
+ *
+ * Done? | Shortcode | Implementing method
+ * ----- | --------- | -------------------
+ * y | 'add_to_cart'                | __CLASS__ . '::product_add_to_cart',
+ * y | 'add_to_cart_url'            | __CLASS__ . '::product_add_to_cart_url',
+ * y | 'best_selling_products'      | __CLASS__ . '::best_selling_products',
+ * y | 'featured_products'          | __CLASS__ . '::featured_products',
+ * y | 'product'                    | __CLASS__ . '::product',
+ * y | 'product_attribute'          | __CLASS__ . '::product_attribute',
+ * y | 'product_categories'         | __CLASS__ . '::product_categories',
+ * y | 'product_category'           | __CLASS__ . '::product_category',
+ * y | 'product_page'               | __CLASS__ . '::product_page',
+ * y | 'products'                   | __CLASS__ . '::products',
+ * y |  'recent_products'            | __CLASS__ . '::recent_products',
+ * y | 'related_products'           | __CLASS__ . '::related_products',
+  'sale_products'              | __CLASS__ . '::sale_products',
+  'shop_messages'              | __CLASS__ . '::shop_messages',
+  'top_rated_products'         | __CLASS__ . '::top_rated_products',
+  'woocommerce_cart'           | __CLASS__ . '::cart',
+  'woocommerce_checkout'       | __CLASS__ . '::checkout',
+  'woocommerce_my_account'     | __CLASS__ . '::my_account',     
+  'woocommerce_order_tracking' | __CLASS__ . '::order_tracking',
+	'woocommerce_messages' | __CLASS__::shop_messages 
  */
  
-
-/** 
- *
- */
 function add_to_cart__help() {
   return( "Show the price and add to cart button of a single product by ID" );
 }
@@ -134,7 +133,6 @@ function product_categories__syntax() {
   return( $syntax );
 }
        
-       
 function product_category__help() { 
   return( "Show multiple products in a category by slug." );
 }
@@ -174,13 +172,52 @@ function product_page__syntax() {
 function products__help() {  
 	return( "Show products" ); 
 }								 
-/*
-function products__syntax() { 
-}                  
-function recent_products__help() {            
-function recent_products__syntax() {            
+/** 
+ * Syntax help for products shortcode
+ *
+ */ 
+function products__syntax() {
+  $syntax = array( "ids" => bw_skv( null, "<i>ids</i>", "Product ids. Comma separated." )
+								 , "skus" => bw_skv( null, "<i>skus</i>", "Product SKUs. Comma separated." ) 
+                 , "orderby" => bw_skv( "title", "name|date|ID|parent|rand|menu_order", "Order" )
+                 , "order" => bw_skv( "asc", "desc", "Sequence" )
+                 , "columns" => bw_skv( 4, "numeric", "Columns" )
+                 );
+	return( $syntax ); 
+}
+
+                
+function recent_products__help() { 
+	return( "Recent products" );
+}						
+/**
+ * Syntax help for recent_products shortcode
+ */ 
+function recent_products__syntax() {
+  $syntax = array( "category" => bw_skv( null, "<i>category_name</i>", "Category name" )
+								 , "operator" => bw_skv( "IN", "NOT IN|AND", "Comparison operator" )
+                 , "per_page" => bw_skv( 12, "numeric", "Products per page" )
+                 , "orderby" => bw_skv( "date", "title|name|ID|parent|rand|menu_order", "Order" )
+                 , "order" => bw_skv( "desc", "asc", "Sequence" )
+                 , "columns" => bw_skv( 4, "numeric", "Columns" )
+                 );
+  return( $syntax );
+}
+           
 function related_products__help() {           
-function related_products__syntax() {           
+	return( "Related Products" );
+}
+
+function related_products__syntax() {  
+  $syntax = array( "per_page" => bw_skv( 12, "numeric", "Products per page" )
+                 , "orderby" => bw_skv( "rand", "title|name|date|ID|parent|menu_order", "Order" )
+                 , "columns" => bw_skv( 4, "numeric", "Columns" )
+                 );
+  return( $syntax );
+}
+
+/* 
+         
 function sale_products__help() {              
 function sale_products__syntax() {              
 function shop_messages__help() {              
