@@ -24,16 +24,16 @@
  * y | 'product_category'           | __CLASS__ . '::product_category',
  * y | 'product_page'               | __CLASS__ . '::product_page',
  * y | 'products'                   | __CLASS__ . '::products',
- * y |  'recent_products'            | __CLASS__ . '::recent_products',
+ * y | 'recent_products'            | __CLASS__ . '::recent_products',
  * y | 'related_products'           | __CLASS__ . '::related_products',
-  'sale_products'              | __CLASS__ . '::sale_products',
-  'shop_messages'              | __CLASS__ . '::shop_messages',
+ * y | 'sale_products'              | __CLASS__ . '::sale_products',
+ * y | 'shop_messages'              | __CLASS__ . '::shop_messages',
   'top_rated_products'         | __CLASS__ . '::top_rated_products',
   'woocommerce_cart'           | __CLASS__ . '::cart',
   'woocommerce_checkout'       | __CLASS__ . '::checkout',
   'woocommerce_my_account'     | __CLASS__ . '::my_account',     
   'woocommerce_order_tracking' | __CLASS__ . '::order_tracking',
-	'woocommerce_messages' | __CLASS__::shop_messages 
+ * y |'woocommerce_messages' | __CLASS__::shop_messages 
  */
  
 function add_to_cart__help() {
@@ -215,15 +215,55 @@ function related_products__syntax() {
                  );
   return( $syntax );
 }
-
-/* 
          
-function sale_products__help() {              
-function sale_products__syntax() {              
-function shop_messages__help() {              
-function shop_messages__syntax() {              
-function top_rated_products__help() {         
-function top_rated_products__syntax() {         
+function sale_products__help() {
+	return( "Sale Products" );
+}
+
+/**
+ * Syntax help for sale_products shortcode
+ */
+function sale_products__syntax() { 
+  $syntax = array( "per_page" => bw_skv( 12, "numeric", "Products per page" )
+                 , "orderby" => bw_skv( "title", "name|date|ID|parent|rand|menu_order", "Order" )
+                 , "order" => bw_skv( "asc", "desc", "Sequence" )
+                 , "columns" => bw_skv( 4, "numeric", "Columns" )
+                 );
+  return( $syntax );
+}
+
+/**
+ * Help for shop_messages shortcode
+ */
+function shop_messages__help() { 
+	return( "Show messages" );
+}
+
+/**
+ * Syntax help for shop_messages shortcode
+ */            
+function shop_messages__syntax() { 
+	return( null );
+}
+             
+function top_rated_products__help() { 
+	return( "Top rated products" );
+}
+ 
+/**
+ * Syntax help for top_rated_products shortcode
+ */       
+function top_rated_products__syntax() { 
+  $syntax = array( "category" => bw_skv( null, "<i>category_name</i>", "Category name" )
+								 , "operator" => bw_skv( "IN", "NOT IN|AND", "Comparison operator" )
+                 , "per_page" => bw_skv( 12, "numeric", "Products per page" )
+                 , "orderby" => bw_skv( "title", "date|name|ID|parent|rand|menu_order", "Order" )
+                 , "order" => bw_skv( "asc", "desc", "Sequence" )
+                 , "columns" => bw_skv( 4, "numeric", "Columns" )
+                 );
+  return( $syntax );
+}        
+/* 
 function woocommerce_cart__help() {           
 function woocommerce_cart__syntax() {           
 function woocommerce_checkout__help() {       
@@ -234,3 +274,21 @@ function woocommerce_order_tracking__help() {
 function woocommerce_order_tracking__syntax() { 
 
 */
+
+/**
+ * Help for woocommerce_messages shortcode
+ *
+ * woocommerce_messages is an alias of shop_messages
+ */            
+function woocommerce_messages__help() { 
+	return( show_messages__help() );
+}
+
+/**
+ * Syntax help for woocommerce_messages shortcode
+ * 
+ * woocommerce_messages is an alias of shop_messages
+ */            
+function woocommerce_messages__syntax() { 
+	return( shop_messages__syntax() );
+}             
