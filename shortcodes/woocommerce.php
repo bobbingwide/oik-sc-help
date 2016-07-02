@@ -14,26 +14,26 @@
  *
  * Done? | Shortcode | Implementing method
  * ----- | --------- | -------------------
- * y | 'add_to_cart'                | __CLASS__ . '::product_add_to_cart',
- * y | 'add_to_cart_url'            | __CLASS__ . '::product_add_to_cart_url',
- * y | 'best_selling_products'      | __CLASS__ . '::best_selling_products',
- * y | 'featured_products'          | __CLASS__ . '::featured_products',
- * y | 'product'                    | __CLASS__ . '::product',
- * y | 'product_attribute'          | __CLASS__ . '::product_attribute',
- * y | 'product_categories'         | __CLASS__ . '::product_categories',
- * y | 'product_category'           | __CLASS__ . '::product_category',
- * y | 'product_page'               | __CLASS__ . '::product_page',
- * y | 'products'                   | __CLASS__ . '::products',
- * y | 'recent_products'            | __CLASS__ . '::recent_products',
- * y | 'related_products'           | __CLASS__ . '::related_products',
- * y | 'sale_products'              | __CLASS__ . '::sale_products',
- * y | 'shop_messages'              | __CLASS__ . '::shop_messages',
- * y | 'top_rated_products'         | __CLASS__ . '::top_rated_products',
- * y | 'woocommerce_cart'           | __CLASS__ . '::cart',
- * y | 'woocommerce_checkout'       | __CLASS__ . '::checkout',
- *  'woocommerce_my_account'     | __CLASS__ . '::my_account',     
- *  'woocommerce_order_tracking' | __CLASS__ . '::order_tracking',
- * y |'woocommerce_messages' | __CLASS__::shop_messages 
+ * y | add_to_cart                | WC_Shortcodes::product_add_to_cart
+ * y | add_to_cart_url            | WC_Shortcodes::product_add_to_cart_url
+ * y | best_selling_products      | WC_Shortcodes::best_selling_products
+ * y | featured_products          | WC_Shortcodes::featured_products
+ * y | product                    | WC_Shortcodes::product
+ * y | product_attribute          | WC_Shortcodes::product_attribute
+ * y | product_categories         | WC_Shortcodes::product_categories
+ * y | product_category           | WC_Shortcodes::product_category
+ * y | product_page               | WC_Shortcodes::product_page
+ * y | products                   | WC_Shortcodes::products
+ * y | recent_products            | WC_Shortcodes::recent_products
+ * y | related_products           | WC_Shortcodes::related_products
+ * y | sale_products              | WC_Shortcodes::sale_products
+ * y | shop_messages              | WC_Shortcodes::shop_messages
+ * y | top_rated_products         | WC_Shortcodes::top_rated_products
+ * y | woocommerce_cart           | WC_Shortcodes::cart
+ * y | woocommerce_checkout       | WC_Shortcodes::checkout
+ * y | woocommerce_my_account     | WC_Shortcodes::my_account     
+ * y | woocommerce_order_tracking | WC_Shortcodes::order_tracking
+ * y | woocommerce_messages       | WC_Shortcodes::shop_messages 
  */
  
 function add_to_cart__help() {
@@ -294,11 +294,14 @@ function woocommerce_my_account__syntax() {
                  );
   return( $syntax );
 }    
-/* 
+ 
 function woocommerce_order_tracking__help() { 
-function woocommerce_order_tracking__syntax() { 
+	return( "Order tracking form" );
+}
 
-*/
+function woocommerce_order_tracking__syntax() { 
+	return( null );
+}
 
 /**
  * Help for woocommerce_messages shortcode
