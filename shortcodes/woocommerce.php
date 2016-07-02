@@ -28,8 +28,8 @@
  * y | 'related_products'           | __CLASS__ . '::related_products',
  * y | 'sale_products'              | __CLASS__ . '::sale_products',
  * y | 'shop_messages'              | __CLASS__ . '::shop_messages',
-  'top_rated_products'         | __CLASS__ . '::top_rated_products',
-  'woocommerce_cart'           | __CLASS__ . '::cart',
+ * y | 'top_rated_products'         | __CLASS__ . '::top_rated_products',
+ *  'woocommerce_cart'           | __CLASS__ . '::cart',
   'woocommerce_checkout'       | __CLASS__ . '::checkout',
   'woocommerce_my_account'     | __CLASS__ . '::my_account',     
   'woocommerce_order_tracking' | __CLASS__ . '::order_tracking',
@@ -262,12 +262,25 @@ function top_rated_products__syntax() {
                  , "columns" => bw_skv( 4, "numeric", "Columns" )
                  );
   return( $syntax );
-}        
+} 
+       
+function woocommerce_cart__help() {
+	return( "Display the shopping cart page" );
+}
+           
+function woocommerce_cart__syntax() {
+	return( null );
+}
+          
+function woocommerce_checkout__help() { 
+	return( "Display the checkout page" );
+}
+      
+function woocommerce_checkout__syntax() {  
+	return( null );
+}
+     
 /* 
-function woocommerce_cart__help() {           
-function woocommerce_cart__syntax() {           
-function woocommerce_checkout__help() {       
-function woocommerce_checkout__syntax() {       
 function woocommerce_my_account__help() {     
 function woocommerce_my_account__syntax() {     
 function woocommerce_order_tracking__help() { 
