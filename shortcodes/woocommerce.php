@@ -29,10 +29,10 @@
  * y | 'sale_products'              | __CLASS__ . '::sale_products',
  * y | 'shop_messages'              | __CLASS__ . '::shop_messages',
  * y | 'top_rated_products'         | __CLASS__ . '::top_rated_products',
- *  'woocommerce_cart'           | __CLASS__ . '::cart',
-  'woocommerce_checkout'       | __CLASS__ . '::checkout',
-  'woocommerce_my_account'     | __CLASS__ . '::my_account',     
-  'woocommerce_order_tracking' | __CLASS__ . '::order_tracking',
+ * y | 'woocommerce_cart'           | __CLASS__ . '::cart',
+ * y | 'woocommerce_checkout'       | __CLASS__ . '::checkout',
+ *  'woocommerce_my_account'     | __CLASS__ . '::my_account',     
+ *  'woocommerce_order_tracking' | __CLASS__ . '::order_tracking',
  * y |'woocommerce_messages' | __CLASS__::shop_messages 
  */
  
@@ -280,9 +280,21 @@ function woocommerce_checkout__syntax() {
 	return( null );
 }
      
+function woocommerce_my_account__help() {
+	return( "Display My account" );
+}
+
+/**
+ * Syntax help for woocommerce_my_account
+ * 
+ * Note: current_user is no longer processed as a parameter.
+ */	
+function woocommerce_my_account__syntax() { 
+	$syntax = array( "order_count" => bw_skv( 15, "<i>integer</i>", "Number of orders to show. -1 for all orders" ) 
+                 );
+  return( $syntax );
+}    
 /* 
-function woocommerce_my_account__help() {     
-function woocommerce_my_account__syntax() {     
 function woocommerce_order_tracking__help() { 
 function woocommerce_order_tracking__syntax() { 
 
@@ -294,7 +306,7 @@ function woocommerce_order_tracking__syntax() {
  * woocommerce_messages is an alias of shop_messages
  */            
 function woocommerce_messages__help() { 
-	return( show_messages__help() );
+	return( shop_messages__help() );
 }
 
 /**
