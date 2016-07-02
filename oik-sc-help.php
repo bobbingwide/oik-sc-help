@@ -3,7 +3,7 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads, Jetpack and Genesis theme framework shortcodes
-Version: 1.20.3
+Version: 1.20.4
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -93,7 +93,8 @@ function oik_sc_help_wpmembers() {
 
 /** 
  * Add shortcode help for the WooCommerce plugin
- * 
+ *
+ * Up to v2.6.2 
  */
 function oik_sc_help_woocommerce() {
   //if ( shortcode_exists( "add_to_cart" ) ) {
@@ -115,8 +116,9 @@ function oik_sc_help_woocommerce() {
                     , 'top_rated_products'         
                     , 'woocommerce_cart'           
                     , 'woocommerce_checkout'       
+										, 'woocommerce_messages' 
                     , 'woocommerce_my_account'     
-                    , 'woocommerce_order_tracking' 
+                    , 'woocommerce_order_tracking'
                     );
     foreach ( $shortcodes as $key => $shortcode ) {
       bw_add_shortcode_file( $shortcode, $path );
