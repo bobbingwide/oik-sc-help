@@ -14,7 +14,7 @@
  * y | download_cart | edd_cart_shortcode
  * y | download_checkout | edd_checkout_form_shortcode
  * y | download_discounts | edd_discounts_shortcode
-  | download_history | edd_download_history
+ * y | download_history | edd_download_history
   | downloads | edd_downloads_query
   | edd_login | edd_login_form_shortcode
   | edd_price | edd_download_price_shortcode
@@ -81,6 +81,21 @@ function download_discounts__help() {
 function download_discounts__syntax() {
 	return( null );
 }
+  
+/** 
+ * Help for download_history shortcode
+ */
+function download_history__help() {
+	return( "Show user's download history" );
+}
+ 
+/** 
+ * Syntax help for download_history shortcode
+ */
+function download_history__syntax() {
+	return( null );
+} 
+
 
 /**
  * purchase_link = edd_download_shortcode 
@@ -125,13 +140,6 @@ function purchase_link__syntax() {
 	return( $syntax );
 } 
 
-  
-/** 
-download_history', 'edd_download_history' );
-*/
-function download_history__help() {
-	return( "Show user's download history" );
-} 
 
 /**  
  * purchase_history', 'edd_purchase_history' );
