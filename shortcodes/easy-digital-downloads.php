@@ -7,12 +7,13 @@
  * Latest version: 2.6.3
  *
  *
- * This table of shortcodes extracted from Easy Digital Downloads v2.6.2, on 2016/07/02.
+ * This table of shortcodes extracted from Easy Digital Downloads v2.6.2 ( includes/shortcodes.php) on 2016/07/02.
+ * 
  * Done | Shortcode | Function
  * ---- | ---------- | ---------
  * y | download_cart | edd_cart_shortcode
  * y | download_checkout | edd_checkout_form_shortcode
-  | download_discounts | edd_discounts_shortcode
+ * y | download_discounts | edd_discounts_shortcode
   | download_history | edd_download_history
   | downloads | edd_downloads_query
   | edd_login | edd_login_form_shortcode
@@ -53,11 +54,32 @@ function download_cart__syntax() {
 	return( null );
 }
 
+/**
+ * Help for download_checkout shortcode
+ */
+function download_checkout__help() {
+	return( "Show the checkout form" );
+}
+
+/**
+ * Syntax help for download_checkout
+ */
+function download_checkout__syntax() {
+	return( null );
+}
+
 /** 
- * download_discounts', 'edd_discounts_shortcode' )
+ * Help for download_discounts shortcode
  */
 function download_discounts__help() {
 	return( "Show available discount codes" );
+}
+
+/** 
+ * Syntax help for download_discounts shortcode
+ */
+function download_discounts__syntax() {
+	return( null );
 }
 
 /**
@@ -116,20 +138,6 @@ function download_history__help() {
  */
 function purchase_history__help() {
 	return( "Show user's purchase history" );
-}
-/**
- * Help for download_checkout shortcode
- */
-function download_checkout__help() {
-	return( "Show the checkout form" );
-}
-
-/**
- * Syntax help for download_checkout
- */
-function download_checkout__syntax() {
-	$syntax = null;
-	return( $syntax );
 }
 
 /**
