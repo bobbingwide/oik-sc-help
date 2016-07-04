@@ -15,7 +15,7 @@
  * y | download_checkout | edd_checkout_form_shortcode
  * y | download_discounts | edd_discounts_shortcode
  * y | download_history | edd_download_history
-  | downloads | edd_downloads_query
+ * y | downloads | edd_downloads_query
   | edd_login | edd_login_form_shortcode
   | edd_price | edd_download_price_shortcode
   | edd_profile_editor | edd_profile_editor_shortcode
@@ -94,7 +94,43 @@ function download_history__help() {
  */
 function download_history__syntax() {
 	return( null );
+}
+
+/**
+ * Help for downloads shortcode
+ */
+function downloads__help() {
+	return( "Show downloads list / grid " );
+}
+
+/**
+ * Syntax help for downloads shortcode
+ *  
+ * Originally extracted from version 1.3.2.1.
+ * Rechecked and updated against 2.6.2
+ * 
+ */                
+function downloads__syntax( $shortcode="downloads" ) {
+	$syntax = array( "category" => bw_skv( "", "<i>category list</i>", "Categories to display" )
+								 , "exclude_category" => bw_skv( "", "<i>category list</i>", "Categories to exclude" )
+								 , "tags" => bw_skv( "", "<i>tag list</i>", "Tags to display " ) 
+								 , "exclude_tags" => bw_skv( "", "<i>tag list</i>", "Tags to exclude" )
+								 , "relation" => bw_skv( "OR", "?", "Relation" )
+								 , "number" => bw_skv( 9, "<i>number</i>", "Number to show" )
+								 , "price" => bw_skv( "no", "yes", "Include price?" )
+								 , "excerpt" => bw_skv( "yes", "no", "Include excerpt?" )
+								 , "full_content" => bw_skv( "no", "yes", "Include full content? " )
+								 , "buy_button" => bw_skv( "yes", "no", "Include the Purchase button?" )
+								 , "columns" => bw_skv( 3, "number", "Number of columns per row" )
+								 , "thumbnails" => bw_skv( "true", "false", "Display thumbnail images" )
+								 , "orderby" => bw_skv( "post_date", "price|title|id|random|post__in", "Sort sequence" )
+								 , "order" => bw_skv( "DESC", "ASC", "Sort sequence" )
+								 , "ids" => bw_skv( null, "<i>IDs</i>", "IDs to display" )
+								 , "pagination" => bw_skv( "true", "false", "Support pagination" )
+									 );
+	return( $syntax );
 } 
+ 
 
 
 /**
@@ -184,50 +220,6 @@ function purchase_collection__syntax( $shortcode="purchase_collection" ) {
 								 );
 	return( $syntax );
 }                   
-/**
- * Help for downloads shortcode
- *
- * downloads', 'edd_downloads_query' );
- */
-function downloads__help() {
-	return( "Show downloads list / grid " );
-}
-
-/**
- * Syntax help for downloads shortcode
- *  
- * Extracted from version 1.3.2.1
- 
-	extract( shortcode_atts( array(
-			'category' => '',
-			'tags' => '',
-			'relation' => 'OR',
-			'number' => 10,
-			'price' => 'yes',
-			'excerpt' => 'yes',
-			'full_content' => 'no',
-			'buy_button' => 'yes',
-			'columns' => 3,
-			'thumbnails' => 'true',
-			'orderby' => 'post_date',
-			'order' => 'DESC'
-		), $atts )
- */                
-function downloads__syntax( $shortcode="downloads" ) {
-	$syntax = array( "category" => bw_skv( "", "<i>category list</i>", "Categories to display" )
-								 , "tags" => bw_skv( "", "<i>tag list</i>", "Tags to display " ) 
-								 , "relation" => bw_skv( "OR", "?", "Relation" )
-								 , "number" => bw_skv( 10, "<i>number</i>", "Number to show" )
-								 , "excerpt" => bw_skv( "yes", "no", "Include excerpt?" )
-								 , "full_content" => bw_skv( "no", "yes", "Include full content? " )
-								 , "buy_button" => bw_skv( "yes", "no", "Include the Purchase button" )
-								 , "columns" => bw_skv( 3, "number", "Number of columns per row" )
-								 , "thumbnails" => bw_skv( "true", "false", "Display thumbnail images" )
-								 , "orderby" => bw_skv( "post_date", "", "Sort sequence" )
-								 , "order" => bw_skv( "DESC", "ASC", "Sort sequence" )
-									 );
-	return( $syntax );
-} 
                   
 /** 
  * Help for edd_price shortcode
