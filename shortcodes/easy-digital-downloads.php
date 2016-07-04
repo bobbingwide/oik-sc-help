@@ -19,7 +19,7 @@
  * y | edd_login | edd_login_form_shortcode
  * y | edd_price | edd_download_price_shortcode
  * y | edd_profile_editor | edd_profile_editor_shortcode
-  | edd_receipt | edd_receipt_shortcode
+ * y | edd_receipt | edd_receipt_shortcode
   | edd_register | edd_register_form_shortcode
   | purchase_collection | edd_purchase_collection_shortcode
   | purchase_history | edd_purchase_history
@@ -206,6 +206,42 @@ function edd_profile_editor__example( $shortcode="edd_profile_editor" ) {
 	} else {
 		e( "Example not possible at this time. EDD not active" ); 
 	}  
+}
+
+/**
+ * Help for edd_receipt
+ */
+function edd_receipt__help() {
+	return( "Display purchase receipt" );
+}
+
+/**
+ * Syntax help for edd_receipt
+  
+	$edd_receipt_args = shortcode_atts( array(
+		'error'           => __( 'Sorry, trouble retrieving payment receipt.', 'easy-digital-downloads' ),
+		'price'           => true,
+		'discount'        => true,
+		'products'        => true,
+		'date'            => true,
+		'notes'           => true,
+		'payment_key'     => false,
+		'payment_method'  => true,
+		'payment_id'      => true
+	), $atts, 'edd_receipt' );
+ */
+function edd_receipt__syntax() {
+	$error =  __( 'Sorry, trouble retrieving payment receipt.', 'easy-digital-downloads' );
+	$syntax = array( "error" => bw_skv( $error, "<i>text</i>", "Error text" )
+								 , "price" => bw_skv( "true", "false", "Display price" )
+								 , "discount" => bw_skv( "true", "false", "Display discount" )
+								 , "date" => bw_skv( "true", "false", "Display date" )
+ 								 , "notes" => bw_skv( "true", "false", "Display notes" )
+ 								 , "payment_key" => bw_skv( "false", "<i>payment_key</i>", "Payment key" )
+ 								 , "payment_method" => bw_skv( "true", "false", "Display payment method" )
+ 								 , "payment_id" => bw_skv( "true", "false", "Display payment ID" )
+								 );
+	return( $syntax );
 } 
  
 
