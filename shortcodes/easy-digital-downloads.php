@@ -20,7 +20,7 @@
  * y | edd_price | edd_download_price_shortcode
  * y | edd_profile_editor | edd_profile_editor_shortcode
  * y | edd_receipt | edd_receipt_shortcode
-  | edd_register | edd_register_form_shortcode
+ * y | edd_register | edd_register_form_shortcode
   | purchase_collection | edd_purchase_collection_shortcode
   | purchase_history | edd_purchase_history
   | purchase_link | edd_download_shortcode
@@ -243,7 +243,33 @@ function edd_receipt__syntax() {
 								 );
 	return( $syntax );
 } 
- 
+
+
+/**
+ * Help for edd_register shortcode
+ * 
+ */
+function edd_register__help() {
+	return( "Display the registration form, if not already logged in." );
+}
+  
+/**
+ * Syntax help for edd_register shortcode
+ * 
+ * edd_register implements the same logic as for edd_login.
+ * So, by default, after registering, the user gets redirected to the purchase history page
+ * or home URL if that's not set.
+ */
+function edd_register__syntax() {
+	$purchase_history = edd_get_option( 'purchase_history_page', null );
+	if ( $purchase_history ) {
+		$redirect = get_permalink( $purchase_history );
+	} else {
+		$redirect = home_url();
+	}
+	$syntax = array( "redirect" => bw_skv( $redirect, "<i>URL</i>", "Redirect URL after login." ) );
+	return( $syntax );
+} 
 
 
 /**
