@@ -16,7 +16,7 @@
  * y | download_discounts | edd_discounts_shortcode
  * y | download_history | edd_download_history
  * y | downloads | edd_downloads_query
-  | edd_login | edd_login_form_shortcode
+ * y | edd_login | edd_login_form_shortcode
   | edd_price | edd_download_price_shortcode
   | edd_profile_editor | edd_profile_editor_shortcode
   | edd_receipt | edd_receipt_shortcode
@@ -129,6 +129,30 @@ function downloads__syntax( $shortcode="downloads" ) {
 								 , "pagination" => bw_skv( "true", "false", "Support pagination" )
 									 );
 	return( $syntax );
+}
+ 
+/**
+ * Help for edd_login shortcode
+ * 
+ */
+function edd_login__help() {
+	return( "Display the login form, if not already logged in" );
+}
+  
+/**
+ * Syntax help for edd_login shortcode
+ * 
+ * @{see edd_login_form_shortcode() } for latest logic
+ */
+function edd_login__syntax() {
+	$purchase_history = edd_get_option( 'purchase_history_page', null );
+	if ( $purchase_history ) {
+		$redirect = get_permalink( $purchase_history );
+	} else {
+		$redirect = home_url();
+	}
+	$syntax = array( "redirect" => bw_skv( $redirect, "<i>URL</i>", "Redirect URL after login." )
+	return( $syntax );
 } 
  
 
@@ -184,21 +208,6 @@ function purchase_history__help() {
 	return( "Show user's purchase history" );
 }
 
-/**
- * Help for edd_login shortcode
- *
- * edd_login', 'edd_login_form_shortcode' );
- */
-function edd_login__help() {
-	return( "Display the login form, if not already logged in" );
-}
-  
-/**
- * Syntax help for edd_login shortcode
- */
-function edd_login__syntax() {
-	return( null );
-} 
 
 /**  
  * Help for purchase_collection shortcode
