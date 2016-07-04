@@ -21,7 +21,7 @@
  * y | edd_profile_editor | edd_profile_editor_shortcode
  * y | edd_receipt | edd_receipt_shortcode
  * y | edd_register | edd_register_form_shortcode
-  | purchase_collection | edd_purchase_collection_shortcode
+ * y | purchase_collection | edd_purchase_collection_shortcode
   | purchase_history | edd_purchase_history
   | purchase_link | edd_download_shortcode
  *
@@ -269,7 +269,29 @@ function edd_register__syntax() {
 	}
 	$syntax = array( "redirect" => bw_skv( $redirect, "<i>URL</i>", "Redirect URL after login." ) );
 	return( $syntax );
-} 
+}
+ 
+/**  
+ * Help for purchase_collection shortcode
+ */
+function purchase_collection__help() {
+	return( "Display a purchase collection link" );
+}
+
+/**
+ * Syntax help for purchase_collection shortcode
+ */
+function purchase_collection__syntax( $shortcode="purchase_collection" ) {
+	$text	= __('Purchase All Items','easy-digital-downloads' );
+	$syntax = array( "taxonomy" => bw_skv( "", "<i>taxonomy</i>", "Taxonomy name" )
+								 , "terms" => bw_skv( "", "<i>terms</i>", "Taxonomy terms" )
+								 , "text" => bw_skv( $text, "<i>link text</i>", "Text for link to purchase all items" )
+								 , "style" => bw_skv( edd_get_option( 'button_style', 'button' ), "plain", "Button style" )
+								 , "color" => bw_skv( edd_get_option( 'checkout_color', 'blue' ), "white|gray|red|green|yellow|orange|dark-gray|inherit", "Button color" )
+								 , "class" => bw_skv( "edd-submit", "<i>CSS class</i>", "CSS class name" )
+								 );
+	return( $syntax );
+}                   
 
 
 /**
@@ -324,26 +346,6 @@ function purchase_history__help() {
 }
 
 
-/**  
- * Help for purchase_collection shortcode
- *
- * purchase_collection', 'edd_purchase_collection_s
- */
-function purchase_collection__help() {
-	return( "Display a purchase collection link" );
-}
-
-/**
- * Syntax help for purchase_collection shortcode
- *
- */
-function purchase_collection__syntax( $shortcode="purchase_collection" ) {
-	$syntax = array( "taxonomy" => bw_skv( "", "<i>taxonomy</i>", "Taxonomy name" )
-								 , "terms" => bw_skv( "", "<i>terms</i>", "Taxonomy terms" )
-								 , "link" => bw_skv( "Purchase All Items", "link text", "Text for link to purchase all items" )
-								 );
-	return( $syntax );
-}                   
 
  
  
