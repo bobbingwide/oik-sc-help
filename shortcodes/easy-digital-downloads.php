@@ -23,7 +23,7 @@
  * y | edd_register | edd_register_form_shortcode
  * y | purchase_collection | edd_purchase_collection_shortcode
  * y | purchase_history | edd_purchase_history
-  | purchase_link | edd_download_shortcode
+ * y | purchase_link | edd_download_shortcode
  *
  */
  
@@ -288,7 +288,7 @@ function purchase_collection__syntax( $shortcode="purchase_collection" ) {
 								 , "text" => bw_skv( $text, "<i>link text</i>", "Text for link to purchase all items" )
 								 , "style" => bw_skv( edd_get_option( 'button_style', 'button' ), "plain", "Button style" )
 								 , "color" => bw_skv( edd_get_option( 'checkout_color', 'blue' ), "white|gray|red|green|yellow|orange|dark-gray|inherit", "Button color" )
-								 , "class" => bw_skv( "edd-submit", "<i>CSS class</i>", "CSS class name" )
+								 , "class" => bw_skv( "edd-submit", "<i>CSS classes</i>", "One or more custom CSS class names" )
 								 );
 	return( $syntax );
 } 
@@ -307,47 +307,30 @@ function purchase_history__syntax() {
 	return( null );
 }
 
-
 /**
- * purchase_link = edd_download_shortcode 
+ * Help for purchase_link shortcode 
  */
 function purchase_link__help() {
 	return( "Display purchase button" );
 } 
 
-/** 
- * @link https://easydigitaldownloads.com/docs/display-purchase-buttons-purchase_link/
-
-[purchase_link id="4747" text="Purchase" style="button" color="green"]
-
-id – the ID number of the download for the button
-text – the text displayed on the button
-style – the style of the purchase link, either “button” or “text”
-color- the color of the button (when using the “button” style”:
-gray
-blue
-green
-dark gray
-yellow
-class – one or more custom CSS classes you want applied to the button
-} 
-
-
-	extract( shortcode_atts( array(
-			'id' 	=> $post->ID,
-			'text'	=> isset( $edd_options[ 'add_to_cart_text' ] ) && $edd_options[ 'add_to_cart_text' ] != '' ? $edd_options[ 'add_to_cart_text' ] 	: __( 'Purchase', 'edd' ),
-			'style' => isset( $edd_options[ 'button_style' ] ) 	 	? $edd_options[ 'button_style' ] 		: 'button',
-			'color' => isset( $edd_options[ 'checkout_color' ] ) 	? $edd_options[ 'checkout_color' ] 		: 'blue',
-			'class' => 'edd-submit'
-
+/**
+ * Syntax help for purchase_link shortcode
+ * 
+ * Updated for 2.6.3
  */
 function purchase_link__syntax() {
 	$syntax = array( "id" => bw_skv( "ID", "<i>download ID</i>", "ID of the download" )
-									 , "text" => bw_skv( "", "<i>Add to cart text</i>", "Add to cart text" )
-									 , "style" => bw_skv( "button", "text", "Defined button style" )
-									 , "color" => bw_skv( "blue", "gray|green|dark gray|yellow", "Checkout button colour" )
-									 , "class" => bw_skv( "edd-submit", "<i>CSS classes</i>", "one or more custom CSS classes" )
-									 );
+								 , "price_id" => bw_skv( "false", "<i>price ID</i>", "ID of the variable price" )
+								 , "sku" => bw_skv( "", "<i>SKU</i>", "Stock Keeping Unit" )
+								 , "price" => bw_skv( "1", "0", "no", "Display price?" )
+								 , "direct" => bw_skv( "0", "1", "no", "Buy now?" )
+								 , "text" => bw_skv( "", "<i>text</i>", "Add to cart or Buy now text" )
+								 , "style" => bw_skv( edd_get_option( 'button_style', 'button' ), "plain", "Button style" )
+								 , "color" => bw_skv( edd_get_option( 'checkout_color', 'blue' ), "white|gray|red|green|yellow|orange|dark-gray|inherit", "Button color" )
+								 , "class" => bw_skv( "edd-submit", "<i>CSS classes</i>", "One or more custom CSS class names" )
+								 , "form_id" => bw_skv( null, "<i>form ID</i>", "Form ID" )
+								 );
 	return( $syntax );
 } 
 
