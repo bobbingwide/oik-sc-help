@@ -18,7 +18,7 @@
  * y | downloads | edd_downloads_query
  * y | edd_login | edd_login_form_shortcode
  * y | edd_price | edd_download_price_shortcode
-  | edd_profile_editor | edd_profile_editor_shortcode
+ * y | edd_profile_editor | edd_profile_editor_shortcode
   | edd_receipt | edd_receipt_shortcode
   | edd_register | edd_register_form_shortcode
   | purchase_collection | edd_purchase_collection_shortcode
@@ -175,6 +175,38 @@ function edd_price__syntax( $shortcode="edd_price" ) {
 								 );
 	return( $syntax );
 }
+
+/**
+ * Implement help hook for edd_profile_editor 
+ */
+function edd_profile_editor__help( $shortcode="edd_profile_editor" ) {
+	return( "User profile editor" );
+}
+
+/**
+ * Syntax help for edd_profile_editor
+ */
+function edd_profile_editor__syntax() {
+	return( null );
+}
+
+/**
+ * Implement example hook for edd_profile_editor
+ *
+ * Fatal error: Call to undefined function edd_get_template_part() in 
+ * C:\apache\htdocs\wordpress\wp-content\plugins\easy-digital-downloads\includes\shortcodes.php on line 569
+ */
+function edd_profile_editor__example( $shortcode="edd_profile_editor" ) {
+	if ( function_exists( "EDD" ) ) {
+		oik_require( "includes/template-functions.php", "easy-digital-downloads" );
+		//EDD();
+		$text = "Easy Digital Downloads Profile Editor" ;
+		$example = '';
+		bw_invoke_shortcode( $shortcode, $example, $text );
+	} else {
+		e( "Example not possible at this time. EDD not active" ); 
+	}  
+} 
  
 
 
@@ -251,29 +283,5 @@ function purchase_collection__syntax( $shortcode="purchase_collection" ) {
 	return( $syntax );
 }                   
 
-/**
- * Implement help hook for edd_profile_editor 
- */
-function edd_profile_editor__help( $shortcode="edd_profile_editor" ) {
-	return( "User profile editor" );
-}
-
-/**
- * Implement example hook for edd_profile_editor
- *
- * Fatal error: Call to undefined function edd_get_template_part() in 
- * C:\apache\htdocs\wordpress\wp-content\plugins\easy-digital-downloads\includes\shortcodes.php on line 569
- */
-function edd_profile_editor__example( $shortcode="edd_profile_editor" ) {
-	if ( function_exists( "EDD" ) ) {
-		oik_require( "includes/template-functions.php", "easy-digital-downloads" );
-		//EDD();
-		$text = "Easy Digital Downloads Profile Editor" ;
-		$example = '';
-		bw_invoke_shortcode( $shortcode, $example, $text );
-	} else {
-		e( "Example not possible at this time. EDD not active" ); 
-	}  
-} 
  
  
