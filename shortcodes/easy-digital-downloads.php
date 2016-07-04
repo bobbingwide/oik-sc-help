@@ -17,7 +17,7 @@
  * y | download_history | edd_download_history
  * y | downloads | edd_downloads_query
  * y | edd_login | edd_login_form_shortcode
-  | edd_price | edd_download_price_shortcode
+ * y | edd_price | edd_download_price_shortcode
   | edd_profile_editor | edd_profile_editor_shortcode
   | edd_receipt | edd_receipt_shortcode
   | edd_register | edd_register_form_shortcode
@@ -143,6 +143,8 @@ function edd_login__help() {
  * Syntax help for edd_login shortcode
  * 
  * @{see edd_login_form_shortcode() } for latest logic
+ *
+ * @TODO Check edd_get_option() is available? 
  */
 function edd_login__syntax() {
 	$purchase_history = edd_get_option( 'purchase_history_page', null );
@@ -151,9 +153,28 @@ function edd_login__syntax() {
 	} else {
 		$redirect = home_url();
 	}
-	$syntax = array( "redirect" => bw_skv( $redirect, "<i>URL</i>", "Redirect URL after login." )
+	$syntax = array( "redirect" => bw_skv( $redirect, "<i>URL</i>", "Redirect URL after login." ) );
 	return( $syntax );
 } 
+                  
+/** 
+ * Help for edd_price shortcode
+ */
+function edd_price__help( ) {
+	return( "Display the download's price" );
+}
+
+/**
+ * Syntax help for edd_price shortcode
+ *
+ * Uses $post->ID if not specified 
+ */
+function edd_price__syntax( $shortcode="edd_price" ) {
+	$syntax = array( "id" => bw_skv( "", "<i>download ID</i>", "ID of the download" )
+								 , "price_id" => bw_skv( "false", "<i>price ID</i>", "ID of the variable price" )
+								 );
+	return( $syntax );
+}
  
 
 
@@ -229,25 +250,6 @@ function purchase_collection__syntax( $shortcode="purchase_collection" ) {
 								 );
 	return( $syntax );
 }                   
-                  
-/** 
- * Help for edd_price shortcode
- *
- * edd_price', 'edd_download_price_shortcode' );
- */
-function edd_price__help( ) {
-	return( "Display the download's price" );
-}
-
-/**
- * Syntax help for edd_price shortcode
- *
- * Uses $post->ID if not specified 
- */
-function edd_price__syntax( $shortcode="edd_price" ) {
-	$syntax = array( "id" => bw_skv( "", "<i>download ID</i>", "ID of the download" ) );
-	return( $syntax );
-}
 
 /**
  * Implement help hook for edd_profile_editor 
