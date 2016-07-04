@@ -22,7 +22,7 @@
  * y | edd_receipt | edd_receipt_shortcode
  * y | edd_register | edd_register_form_shortcode
  * y | purchase_collection | edd_purchase_collection_shortcode
-  | purchase_history | edd_purchase_history
+ * y | purchase_history | edd_purchase_history
   | purchase_link | edd_download_shortcode
  *
  */
@@ -291,7 +291,21 @@ function purchase_collection__syntax( $shortcode="purchase_collection" ) {
 								 , "class" => bw_skv( "edd-submit", "<i>CSS class</i>", "CSS class name" )
 								 );
 	return( $syntax );
-}                   
+} 
+
+/**  
+ * Help for purchase_history shortcode
+ */
+function purchase_history__help() {
+	return( "Show user's purchase history" );
+}
+
+/**  
+ * Syntax help for purchase_history shortcode
+ */
+function purchase_history__syntax() {
+	return( null );
+}
 
 
 /**
@@ -337,13 +351,6 @@ function purchase_link__syntax() {
 	return( $syntax );
 } 
 
-
-/**  
- * purchase_history', 'edd_purchase_history' );
- */
-function purchase_history__help() {
-	return( "Show user's purchase history" );
-}
 
 
 
