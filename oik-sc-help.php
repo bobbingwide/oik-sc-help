@@ -3,7 +3,7 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads, Jetpack and Genesis theme framework shortcodes
-Version: 1.20.3
+Version: 1.20.4
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -157,12 +157,15 @@ function oik_sc_help_easy_digital_downloads() {
  *
  * All shortcodes from Jetpack 3.6.2
  * Latest version of Jetpack 3.7.2
+ * Latest version of Jetpack 4.0.4
  * 
  * Some shortcodes will not be active until the implementing module is activated
  * @TODO Add all the missing shortcodes to this list
  */ 
 function oik_sc_help_jetpack() {
-  $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,soundcloud";
+  $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,soundcloud,";
+	$shortcodes .= "jetpack-related-posts,slideshow,videopress,wpvideo,";
+	//$shortcodes .= "
   oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes, "jetpack" ); 
 	
 }

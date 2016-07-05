@@ -1,28 +1,33 @@
-<?php // (C) Copyright Bobbing Wide 2013-2015
+<?php // (C) Copyright Bobbing Wide 2013-2016
 
 /**
  * Implement shortcode syntax for shortcodes delivered by Jetpack
  * 
- * List of shortcodes found from jetpack.wp-a2z.org
- * on 2015/02/02
+ * List of shortcodes found from jetpack.wp-a2z.org on 2015/02/02
+ * updated for Jetpack v4.0.4 on  2016/07/04
  * 
- * 
- * AudioShortcode::__construct() – Add all the actions & resgister the shortcode
- * Grunion_Contact_Form_Plugin::add_shortcode() -
- * Jetpack_Portfolio::__construct() – Conditionally hook into WordPress.
- * Jetpack_Recipes::action_init() -
- * Jetpack_RelatedPosts::action_frontend_init() – Load related posts assets if it’s a elegiable frontend page or execute search and return JSON if it’s an endpoint request.
-Jetpack_RelatedPosts::_setup_shortcode() – Sets up the shortcode processing.
-Jetpack_Slideshow_Shortcode::__construct() -
-Jetpack_VideoPress_Shortcode::__construct() –
+ * Done? | Shortcode | Method / File
+ * ---- | --------- | ---------------
+ * y | archives | modules/shortcodes/archives.php
+ * y | audio | AudioShortcode::__construct() 
+ * y | contact-field |
+ * y | contact-form | Grunion_Contact_Form_Plugin::add_shortcode() 
+ * y | facebook | modules/shortcodes/facebook.php
+ * y | flickr | modules/shortcodes/flickr.php
+ * y | jetpack_portfolio | Jetpack_Portfolio::__construct()
+ * y | portfolio | Jetpack_Portfolio::__construct()  Conditionally hook into WordPress.
+ * y | recipes | Jetpack_Recipes::action_init() 
+ * y | soundcloud | modules/shortcodes/soundcloud.php
+ * y | jetpack-related-posts | modules/related-posts/jetpack-related-posts.php Jetpack_RelatedPosts::action_frontend_init()
+ * y | slideshow | Jetpack_Slideshow_Shortcode::__construct() 
+ * y | videopress | modules/videopress/shortcode.php  
+ * y | wpvideo | modules/videopress/shortcode.php
+ 
 modules/latex.php
-* modules/shortcodes/archives.php
 modules/shortcodes/bandcamp.php
 modules/shortcodes/blip.php
 modules/shortcodes/dailymotion.php
 modules/shortcodes/diggthis.php
-modules/shortcodes/facebook.php
-* modules/shortcodes/flickr.php
 modules/shortcodes/gist.php
 modules/shortcodes/googlemaps.php
 modules/shortcodes/googleplus.php
@@ -32,7 +37,6 @@ modules/shortcodes/medium.php
 modules/shortcodes/mixcloud.php
 modules/shortcodes/scribd.php
 modules/shortcodes/slideshare.php
-* modules/shortcodes/soundcloud.php
 modules/shortcodes/ted.php
 modules/shortcodes/twitter-timeline.php
 modules/shortcodes/vimeo.php
@@ -46,6 +50,8 @@ WPCOM_JSON_API_Post_Endpoint::get_post_by() -
 WPCOM_JSON_API_Post_v1_1_Endpoint::get_post_by() -
 WP_Embed::run_shortcode() – Process the [embed] shortcode.
 WP_Embed::__construct() – Constructor
+
+
  */
  
  
@@ -59,6 +65,7 @@ function audio__help() {
 /**
  * Syntax hook for [audio] shortcode
  * 
+ * Also implemented by WordPress itself
  */
  if ( !function_exists( "audio__syntax" ) ) {
 function audio__syntax() {
@@ -95,7 +102,6 @@ function contact_form__syntax( $shortcode="contact-form" ) {
 function contact_field__help() {
   return( "Display Grunion Contact field" );
 }
-
  
 /**
  *  Syntax hook for [contact-field]
@@ -121,10 +127,8 @@ function jetpack_portfolio__help( $shortcode="jetpack_portfolio" ) {
   return( "Embed portfolio projects" );
 }
 
-
-  
 /**
- * Syntax hook for [jetpack_portfolio[ shortcode
+ * Syntax hook for [jetpack_portfolio] shortcode
  *
  * These notes extracted from wordpress.com
  * 
@@ -138,7 +142,7 @@ function jetpack_portfolio__help( $shortcode="jetpack_portfolio" ) {
  * - order: display projects in ascending or descending order. Defaults to ASC for sorting in ascending order, but you can reverse the order by using DESC to display projects in descending order instead. (ASC/DESC)
  * - orderby: sort projects by different criteria, including author name, project title, and even rand to display in a random order. Defaults to sorting by date. (author, date, title, rand)
  *
- * and this from v3.4.1 of the Jetpack plugin sourc
+ * and this from v3.4.1 of the Jetpack plugin source
  * 
  * `$atts = shortcode_atts( array(
       'display_types'   => true,
@@ -259,15 +263,14 @@ function facebook__syntax( $shortcode="facebook" ) {
 }
 
 /**
- *
+ * Help for flickr shortcode
  */
 function flickr__help() {
 	return( "Embed a Flickr video or photo" );
 }
 	
-	
 /**
- * 
+ * Syntax help for flickr shortcode
  */
 function flickr__syntax() {
 	$syntax = array( "video" => bw_skv( null, "<i>video</i>", "Video" )
@@ -282,23 +285,100 @@ function flickr__syntax() {
 	 );
 	return( $syntax );
 }
- 
+
+/**
+ * Help for soundcloud shortcode
+ */
 function soundcloud__help() {
 	return( "Embed audio from SoundCloud" );
 }
 
-/** 
-
-  https://en.support.wordpress.com/soundcloud-audio-player/
+/**
+ * Syntax help for soundcloud shortcode
+  
+	{@link  https://en.support.wordpress.com/soundcloud-audio-player/}
 	
-	[soundcloud url=”https://api.soundcloud.com/tracks/156661852&#8243; 
+	`
+  [soundcloud url=”https://api.soundcloud.com/tracks/156661852&#8243; 
 	params=”auto_play=false&hide_related=false&visual=true” width=”100%” height=”450? iframe=”true” /]
+	`
  */
 function soundcloud__syntax() {
 	$syntax = array( "url" => bw_skv( null, "<i>URL</i>", "Soundcloud URL" )
 								 );
 	return( $syntax );
+}
+
+/**
+ * Help for jetpack-related-posts shortcode
+ */
+function jetpack_related_posts__help() {
+	return( "Display Related posts" );
+}
+
+/**
+ * Syntax help for jetpack-related-posts
+ */
+function jetpack_related_posts__syntax() {
+	return( null );
 } 
+
+/**
+ * Help for slideshow shortcode
+ * 
+ * [slideshow] is an old alias of [gallery type=slideshow]
+ */
+function slideshow__help() {
+	return( "Display slideshow" );
+}
+
+/**
+ * Syntax help for slideshow shortcode
+ */
+function slideshow__syntax() {
+	$syntax = array( "trans" => bw_skv( "fade", "<i>transition</i>", "Slideshow transition type" )
+								 , "order" => bw_skv( "ASC", "DESC", "Sort order ascending or descending" )
+								 , "orderby" => bw_skv( "menu_order ID", "rand", "Sort by" )
+								 , "id" => bw_skv( null, "<i>ID</i>", "ID - defaults to current post" )
+								 , "include" => bw_skv( '', "<i>IDs</i>", "IDs to include, comma separated" )
+								 , "exclude" => bw_skv( '', "<i>IDs</i>", "IDs to exclude, comma separated" )
+								 , "autostart" => bw_skv( "true", "false", "Autostart the slideshow" )
+								 , "size" => bw_skv( "full", "thumbnail|medium|<i>size</i>", "Image size" )
+								 );
+	return( $syntax );
+}
+
+/**
+ * Help for videopress shortcode
+ */
+function videopress__help() {
+	return( "Embed VideoPress video" );
+}
+
+/**
+ * Syntax help for videopress shortcode
+ */
+function videopress__syntax() {
+	$syntax = array( 'w' => bw_skv( 0, "<i>integer</i>", "Width of the video player, in pixels" )
+								 , 'at' => bw_skv( 0, "<i>seconds</i>", "Start time. How many seconds in to initially seek to" )
+								 , 'hd' => bw_skv( "false", "true", "Whether to display a high definition version" )
+								 , 'loop' => bw_skv( "false", "true", "Whether to loop the video repeatedly" )
+								 , 'freedom' => bw_skv( "false", "true", "Whether to use only free/libre codecs" )
+								 , 'autoplay' => bw_skv( "false", "true", "Whether to autoplay the video on load" )
+								 , 'permalink' => bw_skv( "true", "false", "Whether to display the permalink to the video" )
+								 , 'flashonly' => bw_skv( "false", "true", "Whether to support the Flash player exclusively" )
+								 , 'defaultlangcode' => bw_skv( "false", "<i>lang</i>", "Default language code" )
+								 );
+	return( $syntax );
+}
+
+function wpvideo__help() {
+	return( videopress__help() );
+}
+
+function wpvideo__syntax() {
+	return( videopress__syntax() );
+}
  
  
 
