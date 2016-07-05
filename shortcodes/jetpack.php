@@ -4,51 +4,70 @@
  * Implement shortcode syntax for shortcodes delivered by Jetpack
  * 
  * List of shortcodes found from jetpack.wp-a2z.org on 2015/02/02
- * updated for Jetpack v4.0.4 on  2016/07/04
+ * updated for Jetpack v4.0.4 on  2016/07/04-05
  * 
  * Done? | Shortcode | Method / File
  * ---- | --------- | ---------------
  * y | archives | modules/shortcodes/archives.php
  * y | audio | AudioShortcode::__construct() 
- * y | contact-field |
- * y | contact-form | Grunion_Contact_Form_Plugin::add_shortcode() 
+ * y | contact-field | modules/contact-form/grunion-contact-form.php
+ * y | contact-form | modules/contact-form/grunion-contact-form.php
  * y | facebook | modules/shortcodes/facebook.php
  * y | flickr | modules/shortcodes/flickr.php
- * y | jetpack_portfolio | Jetpack_Portfolio::__construct()
- * y | portfolio | Jetpack_Portfolio::__construct()  Conditionally hook into WordPress.
- * y | recipes | Jetpack_Recipes::action_init() 
+ * y | jetpack_portfolio | modules/custom-post-types/portfolios.php
+ * y | portfolio | modules/custom-post-types/portfolios.php 
+ * y | recipe | modules/shortcodes/recipe.php
  * y | soundcloud | modules/shortcodes/soundcloud.php
- * y | jetpack-related-posts | modules/related-posts/jetpack-related-posts.php Jetpack_RelatedPosts::action_frontend_init()
- * y | slideshow | Jetpack_Slideshow_Shortcode::__construct() 
+ * y | jetpack-related-posts | modules/related-posts/jetpack-related-posts.php
+ * y | slideshow | modules/shortcodes/slideshow.php
  * y | videopress | modules/videopress/shortcode.php  
  * y | wpvideo | modules/videopress/shortcode.php
  * y | latex | modules/latex.php
-modules/shortcodes/bandcamp.php
-modules/shortcodes/blip.php
-modules/shortcodes/dailymotion.php
-modules/shortcodes/diggthis.php
-modules/shortcodes/gist.php
-modules/shortcodes/googlemaps.php
-modules/shortcodes/googleplus.php
-modules/shortcodes/googlevideo.php
-modules/shortcodes/instagram.php
-modules/shortcodes/medium.php
-modules/shortcodes/mixcloud.php
-modules/shortcodes/scribd.php
-modules/shortcodes/slideshare.php
-modules/shortcodes/ted.php
-modules/shortcodes/twitter-timeline.php
-modules/shortcodes/vimeo.php
-modules/shortcodes/vine.php
-modules/shortcodes/youtube.php
-modules/subscriptions.php
-PolldaddyShortcode::__construct() – Add all the actions & resgister the shortcode
-Presentations::__construct() – Constructor
-wp-includes/media.php
-WPCOM_JSON_API_Post_Endpoint::get_post_by() -
-WPCOM_JSON_API_Post_v1_1_Endpoint::get_post_by() -
-WP_Embed::run_shortcode() – Process the [embed] shortcode.
-WP_Embed::__construct() – Constructor
+ * y | bandcamp | modules/shortcodes/bandcamp.php
+ * y | blip.tv | modules/shortcodes/blip.php
+ * * | dailymotion | modules/shortcodes/dailymotion.php
+ * * | dailymotion-channel | modules/shortcodes/dailymotion.php
+ * * | digg | modules/shortcodes/diggthis.php
+ * * | gist | modules/shortcodes/gist.php
+ * * | googlemaps | modules/shortcodes/googlemaps.php
+ * * | googleplus | modules/shortcodes/googleplus.php
+ * * | googlevideo | modules/shortcodes/googlevideo.php
+ * * | houzz | modules/shortcodes/houzz.php
+ * * | instagram | modules/shortcodes/instagram.php
+ * * | medium | modules/shortcodes/medium.php
+ * * | mixcloud | modules/shortcodes/mixcloud.php
+ * * | polldaddy | modules/shortcodes/polldaddy.php
+ * * | presentation | modules/shortcodes/presentations.php
+ * * | slide | modules/shortcodes/presentations.php
+ * * | scribd | modules/shortcodes/scribd.php
+ * * | slideshare | modules/shortcodes/slideshare.php
+ * * | ted | modules/shortcodes/ted.php
+ * * | twitch | modules/shortcodes/twitchtv.php
+ * * | twitchtv | modules/shortcodes/twitchtv.php
+ * * | twitter-timeline | modules/shortcodes/twitter-timeline.php
+ * * | vimeo | modules/shortcodes/vimeo.php
+ * * | vine | modules/shortcodes/vine.php
+ * * | wufoo | modules/shortcodes/wufoo.php
+ * * | youtube | modules/shortcodes/youtube.php
+ * * | jetpack_subscription_form | modules/subscriptions.php     
+ * * | jetpack_top_posts_widget | modules\widgets\top-posts.php
+ * * | testimonials | modules/custom-post-types/testimonial.php 			  
+ * * | jetpack_testimonials | modules/custom-post-types/testimonial.php
+
+* When all the above is y then 
+* 1. Sort
+* 2. Remove the comments below 
+
+* Probably deprecated / deleted by now ( in v4.0.4 )
+* 
+* PolldaddyShortcode::__construct() – Add all the actions & resgister the shortcode
+* Presentations::__construct() – Constructor
+* wp-includes/media.php
+* WPCOM_JSON_API_Post_Endpoint::get_post_by() -
+* WPCOM_JSON_API_Post_v1_1_Endpoint::get_post_by() -
+* WP_Embed::run_shortcode() – Process the [embed] shortcode.
+* WP_Embed::__construct() – Constructor
+
 
 
  */
@@ -404,4 +423,56 @@ function latex__syntax() {
 	return( $syntax );
 } 
 
+/**
+ * Help for bandcamp shortcode
+ */
+function bandcamp__help() {
+	return( "Embed from Bandcamp" );
+}
+
+/**
+ * Syntax help for bandcamp shortcode
+ */
+function bandcamp__syntax() {
+	$syntax = array( 'album' => bw_skv( null, "<i>integer</i>", "Album id" )
+								 , 'track' => bw_skv( null, "<i>integer</i>", "Track id" )
+								 , 'video' => bw_skv( null, "<i>integer</i>", "Track id for video player" )
+								 , 'size' => bw_skv( 'venti', "venti|grande|grande2|grande3|tall_album|tall_track|tall2|short|large|medium|small", "Size" )
+								 , 'bgcol' => bw_skv( 'FFFFFF', "<i>hex</i>", "Background color" )
+								 , 'linkcol' => bw_skv( null, "<i>hex</i>", "Link color" )
+								 , 'layout'      => bw_skv( null, "<i></i>", "encoded layout url" )
+								 , 'width'       => bw_skv( null, "<i>width</i>", "Width, with optional '%'" )
+								 , 'height'      => bw_skv( null, "<i>height</i>", "Height with optional '%'" )
+								 , 'notracklist' => bw_skv( "false",  "true", "Don't display track list" )
+								 , 'tracklist'   => bw_skv( "true", "false", "Display track list" )
+								 , 'artwork'     => bw_skv( "large", "false|none|small", "Artwork" )
+								 , 'minimal'     => bw_skv( "false", "true", "Minimal display" )
+								 , 'theme'       => bw_skv( null, "light|dark", "Theme identifier string" )
+								 , 'package'     => bw_skv( null, "<i>integer</i>", "Package id" )
+								 , 't'           => bw_skv( null, "<i>integer</i>", "Track number" )
+								 , 'tracks'      => bw_skv( null, "<i>tracks</i>", "comma separated list of allowed tracks" )
+							 	 , 'esig'        => bw_skv( null, "<i>hex</i>", "MD5 digest for exclusive embedding" )
+								);
+	return( $syntax );
+}
+
+
+/**
+ * Help for blip.tv shortcode
+ */
+function bliptv__help() {
+	return( "Embed blip.tv" );
+}
+
+/**
+ * Syntax help for blip.tv shortcode
+ * 
+ * [blip.tv ?posts_id=4060324&dest=-1]
+ * [blip.tv http://blip.tv/play/hpZTgffqCAI%2Em4v] // WLS
+ * 
+ */
+function bliptv__syntax() {
+	$syntax = array( 0 => bw_skv( null, "?posts_id=<i>id</i>&dest=<i>-n</i>|http://blip.tv/play/<i>id</i>", "JavaScript or Embed parameter" )
+	return( $syntax );								
+} 
 
