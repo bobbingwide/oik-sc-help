@@ -460,7 +460,7 @@ function bandcamp__syntax() {
 /**
  * Help for blip.tv shortcode
  */
-function bliptv__help() {
+function blip_tv__help() {
 	return( "Embed blip.tv" );
 }
 
@@ -471,7 +471,7 @@ function bliptv__help() {
  * [blip.tv http://blip.tv/play/hpZTgffqCAI%2Em4v] // WLS
  * 
  */
-function bliptv__syntax() {
+function blip_tv__syntax() {
 	$syntax = array( 0 => bw_skv( null, "?posts_id=<i>id</i>&dest=<i>-n</i>|http://blip.tv/play/<i>id</i>", "JavaScript or Embed parameter" )
 								 );
 	return( $syntax );								
