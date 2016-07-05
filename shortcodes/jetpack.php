@@ -473,6 +473,7 @@ function bliptv__help() {
  */
 function bliptv__syntax() {
 	$syntax = array( 0 => bw_skv( null, "?posts_id=<i>id</i>&dest=<i>-n</i>|http://blip.tv/play/<i>id</i>", "JavaScript or Embed parameter" )
+								 );
 	return( $syntax );								
 } 
 
