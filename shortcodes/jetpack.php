@@ -22,8 +22,7 @@
  * y | slideshow | Jetpack_Slideshow_Shortcode::__construct() 
  * y | videopress | modules/videopress/shortcode.php  
  * y | wpvideo | modules/videopress/shortcode.php
- 
-modules/latex.php
+ * y | latex | modules/latex.php
 modules/shortcodes/bandcamp.php
 modules/shortcodes/blip.php
 modules/shortcodes/dailymotion.php
@@ -380,6 +379,29 @@ function wpvideo__syntax() {
 	return( videopress__syntax() );
 }
  
- 
+/**
+ * Help for latex shortcode
+ */ 
+function latex__help() {
+	return( "Beautiful math using LaTeX" );
+}
+
+/**
+ * Syntax help for latex shortcode
+ */
+function latex__syntax() {
+	if ( function_exists( "latex_get_default_color" ) ) {
+		$bg = latex_get_default_color( 'bg' ); 
+		$fg = latex_get_default_color( 'text', '000' );
+	} else {
+		$bg = 'fff';
+		$fg = '000';
+	}
+	$syntax = array( 's' => bw_skv( 0, "<i>integer</i>", "Font size in pixels" )
+								 , 'bg' => bw_skv( $bg, "<i>hex</i>", "Hex code for background color" )
+								 , 'fg' => bw_skv( $fg, "<i>hex</i>", "Hex code for text color" )
+								 );
+	return( $syntax );
+} 
 
 

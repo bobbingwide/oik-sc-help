@@ -165,7 +165,7 @@ function oik_sc_help_easy_digital_downloads() {
 function oik_sc_help_jetpack() {
   $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,soundcloud,";
 	$shortcodes .= "jetpack-related-posts,slideshow,videopress,wpvideo,";
-	//$shortcodes .= "
+	$shortcodes .= "latex,";
   oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes, "jetpack" ); 
 	
 }
