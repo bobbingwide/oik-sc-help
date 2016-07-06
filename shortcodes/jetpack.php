@@ -33,8 +33,8 @@
  * y | googleplus | modules/shortcodes/googleplus.php
  * y | googlevideo | modules/shortcodes/googlevideo.php
  * y | houzz | modules/shortcodes/houzz.php
- * * | instagram | modules/shortcodes/instagram.php
- * * | medium | modules/shortcodes/medium.php
+ * y | instagram | modules/shortcodes/instagram.php
+ * y | medium | modules/shortcodes/medium.php
  * * | mixcloud | modules/shortcodes/mixcloud.php
  * * | polldaddy | modules/shortcodes/polldaddy.php
  * * | presentation | modules/shortcodes/presentations.php
@@ -604,5 +604,51 @@ function houzz__syntax() {
 								 , 'h' => bw_skv( null, "<i>integer</i>", "Height" )
 	return( $syntax );
 }
+
+/**
+ * Help for instagram shortcode
+ */
+function instagram__help() {
+	return( "Embed photo or video from Instagram" );
+}
+
+/**
+ * Syntax help for instagram shortcode
+ *
+ * Examples
+ * `
+ * [instagram url="http://instagram.com/p/PSbF9sEIGP/"]
+ * [instagram url="http://instagram.com/p/PSbF9sEIGP/" width="320"]
+ * `
+ */
+function instagram__syntax() {
+	$syntax = array( "url" => bw_skv( null, "<i>URL</i>", "Instagram URL" )
+								 , "width" => bw_skv( 698, "<i>integer</i>", "Content width. Minimum 320." )
+								 , "hidecaption" => bw_skv( null, "<i>any</i>", "Hide caption" )
+								 );
+	return( $syntax );
+}	
+
+/**
+ * Help for medium shortcode
+ */
+function medium__help() {
+	return( "Embed from Medium.com" );
+}
+
+/**
+ * Syntax help for medium shortcode
+ * 
+ * [medium url="https://medium.com/help-center" width="100%" border="false" collapsed="true"]
+ */
+function medium__syntax() {
+	$syntax = array( "url" => bw_skv( null, "<i>URL</i>", "Medium URL" )
+								 , "width" => bw_skv( 400, "<i>integer</i>", "Width" )
+								 , "hidecaption" => bw_skv( null, "<i>any</i>", "Hide caption" )
+								 , "border" => bw_skv( "true", "false", "Display border" )
+								 , 'collapsed' => bw_skv( "false", "true", "Collapsed?" )
+								 );
+	return( $syntax );
+}								 
 
 
