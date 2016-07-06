@@ -35,7 +35,7 @@
  * y | houzz | modules/shortcodes/houzz.php
  * y | instagram | modules/shortcodes/instagram.php
  * y | medium | modules/shortcodes/medium.php
- * * | mixcloud | modules/shortcodes/mixcloud.php
+ * y | mixcloud | modules/shortcodes/mixcloud.php
  * * | polldaddy | modules/shortcodes/polldaddy.php
  * * | presentation | modules/shortcodes/presentations.php
  * * | slide | modules/shortcodes/presentations.php
@@ -633,16 +633,20 @@ function instagram__syntax() {
  * Help for medium shortcode
  */
 function medium__help() {
-	return( "Embed from Medium.com" );
+	return( "Embed a profile or collection from Medium.com" );
 }
 
 /**
  * Syntax help for medium shortcode
  * 
+ * This example produces lots of JavaScript errors
  * [medium url="https://medium.com/help-center" width="100%" border="false" collapsed="true"]
+ *
+ * This, randomly picked profile works
+ * [medium url=https://medium.com/@robtschwartz]
  */
 function medium__syntax() {
-	$syntax = array( "url" => bw_skv( null, "<i>URL</i>", "Medium URL" )
+	$syntax = array( "url" => bw_skv( null, "<i>URL</i>", "Medium URL. Always starts with https://medium.com" )
 								 , "width" => bw_skv( 400, "<i>integer</i>", "Width" )
 								 , "hidecaption" => bw_skv( null, "<i>any</i>", "Hide caption" )
 								 , "border" => bw_skv( "true", "false", "Display border" )
@@ -651,4 +655,22 @@ function medium__syntax() {
 	return( $syntax );
 }								 
 
+/**
+ * Help for mixcloud shortcode
+ */
+function mixcloud__help() {
+	return( "Embed content from Mixcloud" );
+}
 
+/**
+ * Syntax help for mixcloud shortcode
+ * http://www.mixcloud.com/MalibuRum/play-6-kissy-sellouts-winter-sun-house-party-mix/
+ */
+function mixcloud__syntax() {
+	$syntax = array( "0" => bw_skv( null, "<i>URL</i>", "Mixcloud resource" )
+								 , "width" => bw_skv( 300, "<i>integer</i>", "Width" )
+								 , "height" => bw_skv( 300, "<i>integer</i>", "Height" )
+								 );
+	return( $syntax );
+}								 
+	
