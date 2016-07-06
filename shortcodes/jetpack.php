@@ -30,9 +30,9 @@
  * y | digg | modules/shortcodes/diggthis.php
  * y | gist | modules/shortcodes/gist.php
  * y | googlemaps | modules/shortcodes/googlemaps.php
- * * | googleplus | modules/shortcodes/googleplus.php
- * * | googlevideo | modules/shortcodes/googlevideo.php
- * * | houzz | modules/shortcodes/houzz.php
+ * y | googleplus | modules/shortcodes/googleplus.php
+ * y | googlevideo | modules/shortcodes/googlevideo.php
+ * y | houzz | modules/shortcodes/houzz.php
  * * | instagram | modules/shortcodes/instagram.php
  * * | medium | modules/shortcodes/medium.php
  * * | mixcloud | modules/shortcodes/mixcloud.php
@@ -577,5 +577,32 @@ function googleplus__syntax() {
 	$syntax = array( "url" => bw_skv( null, "https://plus/google.com/<i>id</i>/posts/<i>code</i>|https://plus/google.com/u/0/<i>id</i>/posts/<i>code</i>", "Google+ URL" )
 								 );
 	return( $syntax );
-}								
+}
+
+function googlevideo__help() {
+	return( "Embed Google video- replaced by youtube" );
+}
+
+/** 
+ * Help for houzz shortcode
+ */ 									
+function houzz__help() {
+	return( "Embed content from Houzz" );
+}
+
+/**
+ * Syntax help for houzz shortcode
+ *
+ * Post content:
+ * 	- [houzz=http://www.houzz.com/pro/james-crisp]
+ * 	- http://www.houzz.com/pro/james-crisp
+ * Blog sidebar: [houzz=http://www.houzz.com/profile/alon w=200 h=300]
+ */	 
+function houzz__syntax() {
+	$syntax = array( "0" => bw_skv( null, "=http://www.houzz.com/pro/<i>name</i>", "houzz URL" ) 
+								 , 'w' => bw_skv( null, "<i>integer</i>", "Width" )
+								 , 'h' => bw_skv( null, "<i>integer</i>", "Height" )
+	return( $syntax );
+}
+
 
