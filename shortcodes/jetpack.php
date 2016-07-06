@@ -25,9 +25,9 @@
  * y | latex | modules/latex.php
  * y | bandcamp | modules/shortcodes/bandcamp.php
  * y | blip.tv | modules/shortcodes/blip.php
- * * | dailymotion | modules/shortcodes/dailymotion.php
- * * | dailymotion-channel | modules/shortcodes/dailymotion.php
- * * | digg | modules/shortcodes/diggthis.php
+ * y | dailymotion | modules/shortcodes/dailymotion.php
+ * y | dailymotion-channel | modules/shortcodes/dailymotion.php
+ * y | digg | modules/shortcodes/diggthis.php
  * * | gist | modules/shortcodes/gist.php
  * * | googlemaps | modules/shortcodes/googlemaps.php
  * * | googleplus | modules/shortcodes/googleplus.php
@@ -289,18 +289,17 @@ function flickr__help() {
 	
 /**
  * Syntax help for flickr shortcode
+ *
+ * Note: The 'size' parameter, found in the code for v4.0.4, is not used; so it's not documented here.
  */
 function flickr__syntax() {
-	$syntax = array( "video" => bw_skv( null, "<i>video</i>", "Video" )
-	//         	
-	//	'video'     => 0,
-	//	'photo'     => 0,
-//		'show_info' => 0,
-//		'w'         => 400,
-//		'h'         => 300,
-//		'secret'    => 0,
-//		'size'      => 0,
-	 );
+	$syntax = array( "video" => bw_skv( null, "<i>URL</i>", "Video URL" )
+								 , 'photo'=> bw_skv( null, "<i>URL</i>", "Photo URL" )
+								 , 'show_info' => bw_skv( "no", "yes|true|false" , "Show info box?" )
+								 , 'w' => bw_skv( 400, "<i>integer</i>", "Width" )
+								 , 'h' => bw_skv( 300, "<i>integer</i>", "Height" )
+								 , 'secret' => bw_skv( null, "<i>text</i>", "Photo secret" )
+								 );
 	return( $syntax );
 }
 
@@ -475,5 +474,55 @@ function blip_tv__syntax() {
 	$syntax = array( 0 => bw_skv( null, "?posts_id=<i>id</i>&dest=<i>-n</i>|http://blip.tv/play/<i>id</i>", "JavaScript or Embed parameter" )
 								 );
 	return( $syntax );								
-} 
+}
+
+/**
+ * Help for dailymotion shortcode
+ */
+function dailymotion__help() {
+	return( "Embed DailyMotion video" );
+}
+
+/**
+ * Syntax help for dailymotion shortcode
+ */
+function dailymotion__syntax() {
+	$syntax = array ( "id,0" => bw_skv( null, "<i>id</id>", "ID part of the dailymotion URL" )
+									,	"title" => bw_skv( null, "<i>title</i>", "Title. For use with video parameter." )
+									, "user" => bw_skv( null, "<i>userid</i>", "User id" )
+									, "video" => bw_skv( null, "<i>video</i>", "Video id" )
+									);
+	return( $syntax );
+}
+
+								
+/**
+ * Help for dailymotion-channel shortcode
+ */
+function dailymotion_channel__help() {
+	return( "Embed DailyMotion channel" );
+}
+
+/**
+ * Syntax help for dailymotion-channel shortcode
+ */
+function dailymotion__channel__syntax() {
+	$syntax = array ( "user" => bw_skv( null, "<i>username</i>", "User name" )
+								  , "type" => bw_skv( "badge", "grid|carousel", "Display type" )
+									);
+	return( $syntax );
+}	
+
+/**
+ * Help for digg shortcode
+ */
+function digg__help() {
+	return( "digg shortcode is no longer supported" );
+}	
+
+/**
+ * Help for gist shortcode
+ */
+function gist__help() {
+	return( "						
 

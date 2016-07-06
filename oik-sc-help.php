@@ -156,7 +156,6 @@ function oik_sc_help_easy_digital_downloads() {
  * Add shortcode help for Jetpack 
  *
  * All shortcodes from Jetpack 3.6.2
- * Latest version of Jetpack 3.7.2
  * Latest version of Jetpack 4.0.4
  * 
  * Some shortcodes will not be active until the implementing module is activated
@@ -165,7 +164,7 @@ function oik_sc_help_easy_digital_downloads() {
 function oik_sc_help_jetpack() {
   $shortcodes = "archives,audio,contact-form,contact-field,portfolio,jetpack_portfolio,recipe,facebook,flickr,soundcloud,";
 	$shortcodes .= "jetpack-related-posts,slideshow,videopress,wpvideo,";
-	$shortcodes .= "latex,bandcamp,blip.tv";
+	$shortcodes .= "latex,bandcamp,blip.tv,dailymotion,dailymotion-channel,digg,";
   oik_sc_help_generic( "shortcodes/jetpack.php", $shortcodes, "jetpack" ); 
 	
 }
@@ -173,7 +172,8 @@ function oik_sc_help_jetpack() {
 /**
  * Add shortcode help for Genesis
  * 
- * All shortcodes from Genesis v2.2.7
+ * All shortcodes from Genesis v2.2.7.
+ * Recently checked against Genesis v2.3.0
  */
 function oik_sc_help_genesis() {
   $shortcodes = "footer_backtotop,footer_childtheme_link,footer_copyright,footer_genesis_link,footer_studiopress_link,footer_wordpress_link,footer_loginout";
