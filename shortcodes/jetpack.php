@@ -29,7 +29,7 @@
  * y | dailymotion-channel | modules/shortcodes/dailymotion.php
  * y | digg | modules/shortcodes/diggthis.php
  * y | gist | modules/shortcodes/gist.php
- * * | googlemaps | modules/shortcodes/googlemaps.php
+ * y | googlemaps | modules/shortcodes/googlemaps.php
  * * | googleplus | modules/shortcodes/googleplus.php
  * * | googlevideo | modules/shortcodes/googlevideo.php
  * * | houzz | modules/shortcodes/houzz.php
@@ -536,5 +536,27 @@ function gist__syntax() {
 	$syntax = array( "0" => bw_skv( null, "<i>id</i>|https://gist.github.com/<i>id</i>", "Gist ID or Gist URL" )
 								 );
 	return( $syntax );								
+}
+
+/**
+ * Help for googlemaps shortcode
+ */
+function googlemaps__help() {
+	return( "Display Google Map" );
+}
+
+/** 
+ * Syntax help for googlemaps shortcode
+ *
+ * Example usage:
+ * `
+ *   [googlemaps http://maps.google.com/maps?f=q&hl=en&geocode=&q=San+Francisco,+CA&sll=43.469466,-83.998504&sspn=0.01115,0.025942&g=San+Francisco,+CA&ie=UTF8&z=12&iwloc=addr&ll=37.808156,-122.402458&output=embed&s=AARTsJp56EajYksz3JXgNCwT3LJnGsqqAQ&w=425&h=350]
+ *   [googlemaps https://mapsengine.google.com/map/embed?mid=zbBhkou4wwtE.kUmp8K6QJ7SA&w=640&h=480]
+ * `
+ */
+function googlemaps__syntax() {
+	$syntax = array( "0" => bw_skv( null, "<i>URL</i>", "Google maps URL" )
+								 );
+	return( $syntax );
 }				
 
