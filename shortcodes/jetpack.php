@@ -28,7 +28,7 @@
  * y | dailymotion | modules/shortcodes/dailymotion.php
  * y | dailymotion-channel | modules/shortcodes/dailymotion.php
  * y | digg | modules/shortcodes/diggthis.php
- * * | gist | modules/shortcodes/gist.php
+ * y | gist | modules/shortcodes/gist.php
  * * | googlemaps | modules/shortcodes/googlemaps.php
  * * | googleplus | modules/shortcodes/googleplus.php
  * * | googlevideo | modules/shortcodes/googlevideo.php
@@ -524,5 +524,17 @@ function digg__help() {
  * Help for gist shortcode
  */
 function gist__help() {
-	return( "						
+	return( "Embed a Gist from GitHub" );
+}
+
+/**
+ * Syntax help for gist shortcode
+ *
+ * Note: The Gist ID can be passed in content. e.g. [gist]Gist ID[/gist]
+ */
+function gist__syntax() {
+	$syntax = array( "0" => bw_skv( null, "<i>id</i>|https://gist.github.com/<i>id</i>", "Gist ID or Gist URL" )
+								 );
+	return( $syntax );								
+}				
 
