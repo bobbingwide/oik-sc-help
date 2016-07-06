@@ -558,5 +558,24 @@ function googlemaps__syntax() {
 	$syntax = array( "0" => bw_skv( null, "<i>URL</i>", "Google maps URL" )
 								 );
 	return( $syntax );
-}				
+}
+
+/**
+ * Help for googleplus shortcode
+ */
+function googleplus__help() {
+	return( "Embed Google+" );
+}
+
+/**
+ * Syntax help for googleplus shortcode
+ *
+ * Example URL: https://plus.google.com/114986219448604314131/posts/LgHkesWCmJo
+ * Alternate example: https://plus.google.com/u/0/100004581596612508203/posts/2UKwN67MBQs  (note the /u/0/)
+ */
+function googleplus__syntax() {
+	$syntax = array( "url" => bw_skv( null, "https://plus/google.com/<i>id</i>/posts/<i>code</i>|https://plus/google.com/u/0/<i>id</i>/posts/<i>code</i>", "Google+ URL" )
+								 );
+	return( $syntax );
+}								
 
