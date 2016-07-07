@@ -36,7 +36,7 @@
  * y | instagram | modules/shortcodes/instagram.php
  * y | medium | modules/shortcodes/medium.php
  * y | mixcloud | modules/shortcodes/mixcloud.php
- * * | polldaddy | modules/shortcodes/polldaddy.php
+ * y | polldaddy | modules/shortcodes/polldaddy.php
  * * | presentation | modules/shortcodes/presentations.php
  * * | slide | modules/shortcodes/presentations.php
  * * | scribd | modules/shortcodes/scribd.php
@@ -672,5 +672,48 @@ function mixcloud__syntax() {
 								 , "height" => bw_skv( 300, "<i>integer</i>", "Height" )
 								 );
 	return( $syntax );
-}								 
+}	 
+ 						 
+/**
+ * Help for polldaddy shortcode
+ */
+function polldaddy__help() {
+	return( "Embed Polldaddy poll, survey or rating" );
+}
+
+/**
+ * Syntax help for polldaddy shortcode
+ *
+ * [polldaddy poll|survey|rating="123456"]
+ * 
+ * @TODO Revisit the parameters to check what they really are!
+ */
+function polldaddy__syntax() {
+	global $content_width;
+	bw_trace2( $content_width, "content_width", false );
 	
+	$syntax = array( 'survey' => bw_skv(  null,	"<i>id</i>", "Survey ID" )
+								 , 'link_text' => bw_skv( 'Take Our Survey', "<i>text</i>", "Link text" )
+								 , 'poll' => bw_skv( 'empty', "<i>id</i>", "Poll ID" )
+								 , 'rating' => bw_skv( 'empty', "<i>id</i>", "Rating ID" )
+								 , 'unique_id' => bw_skv(  null, "<i>integer</i>", "Unique ID" )
+								 , 'item_id' => bw_skv( null, "<i>integer</i>", "Unique ID" )
+								 , 'title' => bw_skv( null, "<i>text</i>", "Title" )
+								 , 'permalink' => bw_skv(  null, "<i>URL</i>", "Permalink" )
+								 , 'cb' => bw_skv(  0, "<i>callback</i>", "Callback" )
+								 , 'type' => bw_skv( 'button', 'slider', "Type" )
+								 , 'body' => bw_skv( '', "<i>text</i>", "Body" )
+								 , 'button' => bw_skv(  '',
+								 , 'text_color' => bw_skv( '000000', "<i>hex</i>", "Text color" )
+								 , 'back_color' => bw_skv(  'FFFFFF', "<i>hex</i>", "Background color" )
+								 , 'align' => bw_skv( '', "left|right", "Alignment " )
+								 , 'style' => bw_skv( '', "<i>text</i>", "Style" )
+								 , 'width' => bw_skv( $content_width, "<i>integer</i>", "Width" )
+								 , 'height' => bw_skv( floor( $content_width * 3 / 4 ), "<i>integer</i>", "Height" )
+								 , 'delay' => bw_skv( 100, "<i>microseconds</i>", "Delay in microseconds" )
+								 , 'visit' => bw_skv( 'single', 'multiple', "Number of visits" )
+								 , 'domain' => bw_skv(  '', "<i>domain</i>", "Domain name" )
+								 , 'id' => bw_skv( '', "<i>ID</i>", "ID )
+                 );
+	return( $syntax );
+}
