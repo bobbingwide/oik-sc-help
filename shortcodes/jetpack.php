@@ -602,6 +602,7 @@ function houzz__syntax() {
 	$syntax = array( "0" => bw_skv( null, "=http://www.houzz.com/pro/<i>name</i>", "houzz URL" ) 
 								 , 'w' => bw_skv( null, "<i>integer</i>", "Width" )
 								 , 'h' => bw_skv( null, "<i>integer</i>", "Height" )
+								 );
 	return( $syntax );
 }
 
