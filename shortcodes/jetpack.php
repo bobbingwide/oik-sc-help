@@ -714,7 +714,7 @@ function polldaddy__syntax() {
 								 , 'delay' => bw_skv( 100, "<i>microseconds</i>", "Delay in microseconds" )
 								 , 'visit' => bw_skv( 'single', 'multiple', "Number of visits" )
 								 , 'domain' => bw_skv(  '', "<i>domain</i>", "Domain name" )
-								 , 'id' => bw_skv( '', "<i>ID</i>", "ID )
+								 , 'id' => bw_skv( '', "<i>ID</i>", "ID" )
                  );
 	return( $syntax );
 }
