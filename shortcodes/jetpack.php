@@ -704,7 +704,7 @@ function polldaddy__syntax() {
 								 , 'cb' => bw_skv(  0, "<i>callback</i>", "Callback" )
 								 , 'type' => bw_skv( 'button', 'slider', "Type" )
 								 , 'body' => bw_skv( '', "<i>text</i>", "Body" )
-								 , 'button' => bw_skv(  '',
+								 , 'button' => bw_skv(  '', "<i>button</i>", "Button" )
 								 , 'text_color' => bw_skv( '000000', "<i>hex</i>", "Text color" )
 								 , 'back_color' => bw_skv(  'FFFFFF', "<i>hex</i>", "Background color" )
 								 , 'align' => bw_skv( '', "left|right", "Alignment " )
