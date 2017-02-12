@@ -3,12 +3,12 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: http://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads, Jetpack and Genesis theme framework shortcodes
-Version: 1.20.4
+Version: 1.20.5
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
 
-    Copyright 2012-2016 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2012-2017 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -40,6 +40,7 @@ function oik_sc_help_init() {
   oik_sc_help_easy_digital_downloads();
   oik_sc_help_jetpack();
 	oik_sc_help_genesis();
+	oik_sc_help_yoast_seo();
 	
 	add_filter( "oiksc_shortcodes_components", "oik_sc_shortcodes_components", 11 );
 	
@@ -183,6 +184,14 @@ function oik_sc_help_genesis() {
 	$shortcodes .= ",post_comments,post_tags,post_categories,post_terms,post_edit";
   oik_sc_help_generic( "shortcodes/genesis.php", $shortcodes, "genesis" ); 
 }
+
+/**
+ * Add shortcode help for Yoast SEO
+ */
+function oik_sc_help_yoast_seo() {
+	$shortcodes = "wpseo_breadcrumb,wpseo_sitemap";
+	oik_sc_help_generic( "shortcodes/wordpress-seo.php", $shortcodes, "wordpress-seo" );
+} 
  
   
 /**
