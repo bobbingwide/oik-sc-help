@@ -1,10 +1,10 @@
 === oik shortcode help shortcodes ===
 Contributors: bobbingwide
-Donate link: http://www.oik-plugins.com/oik/oik-donate/
+Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy, [bw_code], [bw_codes]
 Requires at least: 3.9
-Tested up to: 4.5.3
-Stable tag: 1.20.3 
+Tested up to: 5.7.1
+Stable tag: 1.20.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ Yes - see above
 2. [bw_code] output showing Shortcode HTML snippets
 
 == Upgrade Notice ==
+= 1.20.6 =
+Repackaged.
+
 = 1.20.3 = 
 Upgrade for improved help and syntax for WooCommerce & Easy Digital Downloads 
 
@@ -57,6 +60,12 @@ This version is a standalone version from www.oik-plugins.co.uk
 This version matches the child plugin xyz in oik v1.17
 
 == Changelog ==
+= 1.20.6 =
+* Changed: There've been a few changes I forgot to ship
+* Tested: With WordPress 5.7.1 and WordPress Multi Site
+* Tested: With PHP 8.0
+* Tested: With Gutenberg 10.4.1
+
 = 1.20.3 = 
 * Changed: Implement oiksc_shortcodes_components to map shortcodes to components [github bobbingwide oik-sc-help issues 3]
 * Changed: Add Help and Syntax for WooCommerce shortcodes [github bobbingwide oik-sc-help issues 4]
@@ -64,7 +73,7 @@ This version matches the child plugin xyz in oik v1.17
 * Tested: With WordPress 4.5.3 and WordPress 4.6-beta1
 
 = 1.20.2 =
-*	Added: Help and syntax for Genesis theme framework shortcodes [github bobbingwide oik-sc-help issue 1]
+* Added: Help and syntax for Genesis theme framework shortcodes [github bobbingwide oik-sc-help issue 1]
 * Tested: With WordPress 4.5.2 and WordPress MultiSite
 
 = 1.20.1 = 
@@ -99,6 +108,6 @@ This version matches the child plugin xyz in oik v1.17
 
 == Further reading ==
 If you want to read more about the oik plugins then please visit the
-[oik plugin](http://www.oik-plugins.com/oik) 
+[oik plugin](https://www.oik-plugins.com/oik) 
 **"the oik plugin - for often included key-information"**
 
