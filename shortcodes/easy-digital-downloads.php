@@ -332,7 +332,14 @@ function purchase_link__syntax() {
 								 , "form_id" => bw_skv( null, "<i>form ID</i>", "Form ID" )
 								 );
 	return( $syntax );
-} 
+}
+
+if ( !function_exists( 'edd_get_option')) {
+	function edd_get_option( $option, $default ) {
+		return $default;
+	}
+}
+
 
 
 
