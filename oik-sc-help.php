@@ -3,12 +3,12 @@
 Plugin Name: oik shortcode help shortcodes
 Plugin URI: https://www.oik-plugins.com/oik-plugins/oik-sc-help
 Description: [bw_code] and [bw_codes] shortcodes and help for wp-members, WooCommerce, Easy-Digital-Downloads, Jetpack and Genesis theme framework shortcodes
-Version: 1.20.6
+Version: 1.20.7
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 License: GPL2
 
-    Copyright 2012-2021 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2012-2023 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,

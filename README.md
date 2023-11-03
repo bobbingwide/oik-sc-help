@@ -1,11 +1,11 @@
 # oik shortcode help shortcodes 
-![banner](https://raw.githubusercontent.com/bobbingwide/oik-sc-help/master/assets/oik-sc-help-banner-772x250.jpg)
+![banner](assets/oik-sc-help-banner-772x250.jpg)
 * Contributors: bobbingwide
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcodes, smart, lazy, [bw_code], [bw_codes]
 * Requires at least: 3.9
-* Tested up to: 5.7.1
-* Stable tag: 1.20.6
+* Tested up to: 6.4-RC3
+* Stable tag: 1.20.7
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,9 @@ Yes - see above
 2. [bw_code] output showing Shortcode HTML snippets
 
 ## Upgrade Notice 
+# 1.20.7 
+Update for PHP 8.1 and PHP 8.2 support
+
 # 1.20.6 
 Repackaged.
 
@@ -61,6 +64,14 @@ This version is a standalone version from www.oik-plugins.co.uk
 This version matches the child plugin xyz in oik v1.17
 
 ## Changelog 
+# 1.20.7 
+* Changed: Support PHP 8.1 and PHP 8.2
+* Fixed: Add edd_get_option function if EDD not activated #8
+* Tested: With WordPress 6.4-RC3 and WordPress Multisite
+* Tested: With Gutenberg 16.9.0
+* Tested: With PHP 8.0, PHP 8.1 and PHP 8.2
+* Tested: With PHPUnit 9.6
+
 # 1.20.6 
 * Changed: There've been a few changes I forgot to ship
 * Tested: With WordPress 5.7.1 and WordPress Multi Site
