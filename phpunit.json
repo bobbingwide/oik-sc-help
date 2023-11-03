@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.075985">
+    <testsuite name="oik-sc-help" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.075985">
+      <testsuite name="Tests_load_libs" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-sc-help\tests\test-a-load-php.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.075985">
+        <testcase name="test_load_admin" class="Tests_load_libs" classname="Tests_load_libs" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-sc-help\tests\test-a-load-php.php" line="25" assertions="1" time="0.054005"/>
+        <testcase name="test_load_shortcodes" class="Tests_load_libs" classname="Tests_load_libs" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-sc-help\tests\test-a-load-php.php" line="31" assertions="1" time="0.006731"/>
+        <testcase name="test_load_plugin" class="Tests_load_libs" classname="Tests_load_libs" file="C:\apache\htdocs\wordpress\wp-content\plugins\oik-sc-help\tests\test-a-load-php.php" line="43" assertions="1" time="0.015249"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
